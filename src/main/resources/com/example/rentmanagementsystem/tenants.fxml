@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: linear-gradient(to bottom right, #2C7A7B, #16353D);" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rentmanagementsystem.TenantsViewController">
+   <children>
+      <Label layoutX="469.0" layoutY="68.0" style="-fx-text-fill: #F5F5F5;" text="RENT MANAGEMENT SYSTEM">
+         <font>
+            <Font name="Segoe UI Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="52.0" layoutY="164.0" prefHeight="19.0" prefWidth="206.0" style="-fx-background-color: WHITE;" text="Tenants Information :-" textFill="#6e231cc4">
+         <font>
+            <Font name="Segoe UI Bold" size="18.0" />
+         </font>
+      </Label>
+      <TableView layoutX="12.0" layoutY="208.0" prefHeight="402.0" prefWidth="1254.0">
+        <columns>
+          <TableColumn prefWidth="113.60000324249268" text="ID" />
+          <TableColumn prefWidth="231.2000274658203" text="NAME" />
+            <TableColumn prefWidth="154.39996337890625" text="FLAT/ROOM/DOKAN" />
+            <TableColumn prefWidth="223.20001220703125" text="PHONE NUMBER" />
+            <TableColumn prefWidth="217.5999755859375" text="LOCATION/AREA" />
+            <TableColumn prefWidth="162.4000244140625" text="MONTHLY RENT" />
+            <TableColumn prefWidth="154.39990234375" text="ADVANCED" />
+        </columns>
+      </TableView>
+      <Button layoutX="569.0" layoutY="640.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="142.0" text="Click">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Label layoutX="52.0" layoutY="652.0" text="Search Tenants" textFill="#ff9355">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="192.0" layoutY="653.0" prefHeight="26.0" prefWidth="286.0" />
+   </children>
+</AnchorPane>
