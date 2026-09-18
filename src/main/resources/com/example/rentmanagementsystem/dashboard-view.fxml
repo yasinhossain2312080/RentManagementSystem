@@ -12,17 +12,17 @@
             <Font name="Segoe UI Bold" size="29.0" />
          </font>
       </Label>
-      <Button layoutX="516.0" layoutY="144.0" mnemonicParsing="false" onAction="#addTenantsButtonOnAction" prefHeight="30.0" prefWidth="246.0" text="Add Tenants">
+      <Button layoutX="516.0" layoutY="158.0" mnemonicParsing="false" onAction="#addTenantsButtonOnAction" prefHeight="30.0" prefWidth="246.0" text="Add Tenants">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="516.0" layoutY="329.0" mnemonicParsing="false" onAction="#rentPaymentsButtonOnAction" prefHeight="30.0" prefWidth="246.0" text="Rent Payments">
+      <Button layoutX="516.0" layoutY="343.0" mnemonicParsing="false" onAction="#rentPaymentsButtonOnAction" prefHeight="30.0" prefWidth="246.0" text="Rent Payments">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="516.0" layoutY="437.0" mnemonicParsing="false" onAction="#historyButtonOnAction" prefHeight="30.0" prefWidth="246.0" text="History">
+      <Button layoutX="516.0" layoutY="451.0" mnemonicParsing="false" onAction="#historyButtonOnAction" prefHeight="30.0" prefWidth="246.0" text="History">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
@@ -32,15 +32,20 @@
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="516.0" layoutY="538.0" mnemonicParsing="false" onAction="#settingsButtonOnAction" prefHeight="30.0" prefWidth="246.0" text="Settings">
+      <Button layoutX="516.0" layoutY="552.0" mnemonicParsing="false" onAction="#settingsButtonOnAction" prefHeight="30.0" prefWidth="246.0" text="Settings">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="516.0" layoutY="236.0" mnemonicParsing="false" onAction="#tenantsButtonOnAction" prefHeight="30.0" prefWidth="246.0" text="Tenants">
+      <Button layoutX="516.0" layoutY="250.0" mnemonicParsing="false" onAction="#tenantsButtonOnAction" prefHeight="30.0" prefWidth="246.0" text="Tenants">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Button>
+      <Label layoutX="596.0" layoutY="94.0" style="-fx-text-fill: #F5F5F5;" text="Dash Board">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

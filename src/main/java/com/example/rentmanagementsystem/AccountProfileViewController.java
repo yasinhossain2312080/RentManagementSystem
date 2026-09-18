@@ -1,8 +1,7 @@
 package com.example.rentmanagementsystem;
 
-public class AddTenantsViewController
+public class AccountProfileViewController
 {
     @javafx.fxml.FXML
     public void initialize() {
-    }
-}
+    }}

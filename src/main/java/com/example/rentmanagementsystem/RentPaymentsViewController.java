@@ -1,6 +1,6 @@
 package com.example.rentmanagementsystem;
 
-public class AddTenantsViewController
+public class RentPaymentsViewController
 {
     @javafx.fxml.FXML
     public void initialize() {

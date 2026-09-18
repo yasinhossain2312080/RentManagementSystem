@@ -1,6 +1,12 @@
 package com.example.rentmanagementsystem;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class DashboardViewController
 {
@@ -12,9 +18,6 @@ public class DashboardViewController
     public void historyButtonOnAction(ActionEvent actionEvent) {
     }
 
-    @javafx.fxml.FXML
-    public void logoutButtonOnAction(ActionEvent actionEvent) {
-    }
 
     @javafx.fxml.FXML
     public void tenantsButtonOnAction(ActionEvent actionEvent) {
@@ -30,5 +33,15 @@ public class DashboardViewController
 
     @javafx.fxml.FXML
     public void addTenantsButtonOnAction(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void logoutButtonOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage nextStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        nextStage.setTitle("login page!");
+        nextStage.setScene(scene);
+        nextStage.show();
     }
 }

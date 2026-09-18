@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: linear-gradient(to bottom right, #2C7A7B, #16353D);" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rentmanagementsystem.AccountProfileViewController">
+   <children>
+      <Label layoutX="460.0" layoutY="41.0" style="-fx-text-fill: #F5F5F5;" text="Rent Management System">
+         <font>
+            <Font name="Segoe UI Bold" size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="610.0" layoutY="98.0" style="-fx-text-fill: #F5F5F5;" text="Profile">
+         <font>
+            <Font name="Segoe UI Bold" size="19.0" />
+         </font>
+      </Label>
+      <Pane layoutX="373.0" layoutY="151.0" prefHeight="395.0" prefWidth="531.0" style="-fx-background-color: #0E2227; -fx-background-radius: 15;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="41.0" prefHeight="17.0" prefWidth="163.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;" text="🏠 Property Information">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Circle fill="#ececec" layoutX="51.0" layoutY="100.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label layoutX="70.0" layoutY="89.0" prefHeight="23.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Property Name :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField editable="false" layoutX="201.0" layoutY="88.0" prefHeight="25.0" prefWidth="267.0" />
+            <Label layoutX="70.0" layoutY="129.0" prefHeight="23.0" prefWidth="98.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Owner Name :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField editable="false" layoutX="201.0" layoutY="128.0" prefHeight="25.0" prefWidth="267.0" />
+            <Circle fill="#ececec" layoutX="51.0" layoutY="141.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label layoutX="70.0" layoutY="169.0" prefHeight="23.0" prefWidth="122.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Property Address :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Circle fill="#ececec" layoutX="51.0" layoutY="181.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+            <TextField editable="false" layoutX="201.0" layoutY="168.0" prefHeight="25.0" prefWidth="267.0" />
+            <Label layoutX="70.0" layoutY="209.0" prefHeight="23.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Contact Number :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Circle fill="#ececec" layoutX="51.0" layoutY="221.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+            <TextField editable="false" layoutX="201.0" layoutY="208.0" prefHeight="25.0" prefWidth="267.0" />
+            <Label layoutX="70.0" layoutY="249.0" prefHeight="23.0" prefWidth="82.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Total Floors :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Circle fill="#ececec" layoutX="51.0" layoutY="261.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+            <TextField editable="false" layoutX="201.0" layoutY="248.0" prefHeight="25.0" prefWidth="267.0" />
+            <Label layoutX="70.0" layoutY="286.0" prefHeight="23.0" prefWidth="82.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Total Shop :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Circle fill="#ececec" layoutX="51.0" layoutY="298.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+            <TextField editable="false" layoutX="201.0" layoutY="286.0" prefHeight="25.0" prefWidth="267.0" />
+            <Label layoutX="70.0" layoutY="322.0" prefHeight="23.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Total Garments : ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Circle fill="#ececec" layoutX="51.0" layoutY="334.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+            <TextField editable="false" layoutX="201.0" layoutY="322.0" prefHeight="25.0" prefWidth="267.0" />
+         </children>
+      </Pane>
+      <Button layoutX="550.0" layoutY="568.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" text="Update Profile">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="487.0" layoutY="672.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="303.0" text="Could you change your password?">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="1177.0" layoutY="21.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Back" />
+   </children>
+</AnchorPane>

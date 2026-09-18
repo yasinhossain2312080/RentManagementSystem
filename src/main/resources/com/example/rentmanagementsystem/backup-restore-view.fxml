@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: linear-gradient(to bottom right, #2C7A7B, #16353D);" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rentmanagementsystem.BackupAndRestoreViewController">
+   <children>
+      <Label layoutX="473.0" layoutY="40.0" style="-fx-text-fill: #F5F5F5;" text="Rent Management System">
+         <font>
+            <Font name="Segoe UI Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="560.0" layoutY="94.0" style="-fx-text-fill: #F5F5F5;" text="Backup &amp; Restore">
+         <font>
+            <Font name="Segoe UI Bold" size="19.0" />
+         </font>
+      </Label>
+      <Pane layoutX="358.0" layoutY="145.0" prefHeight="523.0" prefWidth="553.0" style="-fx-background-color: #0E2227; -fx-background-radius: 12;">
+         <children>
+            <Label layoutX="28.0" layoutY="27.0" style="-fx-text-fill: #F5F5F5;" text="Google Account">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField layoutX="28.0" layoutY="64.0" prefHeight="25.0" prefWidth="294.0" />
+            <Button layoutX="86.0" layoutY="110.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="179.0" text="Connect google Acccount" />
+            <Label layoutX="384.0" layoutY="68.0" prefHeight="18.0" prefWidth="117.0" style="-fx-text-fill: #F5F5F5;">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="182.0" style="-fx-text-fill: #F5F5F5;" text="Backup Status">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField editable="false" layoutX="29.0" layoutY="224.0" prefHeight="25.0" prefWidth="216.0" />
+            <Label layoutX="34.0" layoutY="279.0" style="-fx-text-fill: #F5F5F5;" text="Last Backup">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField editable="false" layoutX="34.0" layoutY="327.0" prefHeight="25.0" prefWidth="216.0" />
+            <Button layoutX="187.0" layoutY="406.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="179.0" text="Backup Now" />
+            <Button layoutX="187.0" layoutY="470.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="179.0" text="Restore Now" />
+         </children>
+      </Pane>
+      <Button layoutX="1174.0" layoutY="27.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" text="Back" />
+   </children>
+</AnchorPane>

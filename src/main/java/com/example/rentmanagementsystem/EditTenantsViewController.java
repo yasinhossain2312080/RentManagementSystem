@@ -4,4 +4,5 @@ public class EditTenantsViewController
 {
     @javafx.fxml.FXML
     public void initialize() {
-    }}
+    }
+}
