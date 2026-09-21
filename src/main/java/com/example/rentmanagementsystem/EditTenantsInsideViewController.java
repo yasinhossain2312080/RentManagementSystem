@@ -9,12 +9,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class AddTenantsViewController
+public class EditTenantsInsideViewController
 {
     @javafx.fxml.FXML
-    private TextField locationAreaTF;
+    private TextField editNameTF;
+    @javafx.fxml.FXML
+    private TextField editIDTF;
     @javafx.fxml.FXML
     private TextField advanceTF;
+    @javafx.fxml.FXML
+    private TextField locationAreaTF;
     @javafx.fxml.FXML
     private TextField nameTF;
     @javafx.fxml.FXML
@@ -28,21 +32,23 @@ public class AddTenantsViewController
 
     @javafx.fxml.FXML
     public void initialize() {
-
     }
 
     @javafx.fxml.FXML
-    public void addTenantsButtonOnAction(ActionEvent actionEvent) {
-
+    public void updateButtonOnAction(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML
     public void backButtonOnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("edit-tenants-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage nextStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        nextStage.setTitle("DashBoard!");
+        nextStage.setTitle("Edit Tenants View!");
         nextStage.setScene(scene);
         nextStage.show();
+    }
+
+    @javafx.fxml.FXML
+    public void searchTenantsButtonOnAction(ActionEvent actionEvent) {
     }
 }

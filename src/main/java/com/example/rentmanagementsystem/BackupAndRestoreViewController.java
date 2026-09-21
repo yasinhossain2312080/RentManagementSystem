@@ -4,4 +4,6 @@ public class BackupAndRestoreViewController
 {
     @javafx.fxml.FXML
     public void initialize() {
-    }}
+
+    }
+}

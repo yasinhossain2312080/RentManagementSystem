@@ -72,24 +72,24 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="504.0" layoutY="581.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="162.0" text="Delete">
+      <Button layoutX="504.0" layoutY="581.0" mnemonicParsing="false" onAction="#deleteButtonOnAction" prefHeight="41.0" prefWidth="162.0" text="Delete">
          <font>
             <Font name="Segoe UI Bold" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="504.0" layoutY="651.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="162.0" text="Back">
+      <Button layoutX="504.0" layoutY="651.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="34.0" prefWidth="162.0" text="Back">
          <font>
             <Font name="Segoe UI Bold" size="16.0" />
          </font>
       </Button>
-      <Label layoutX="856.0" layoutY="271.0" prefHeight="34.0" prefWidth="243.0" />
-      <Label layoutX="856.0" layoutY="349.0" prefHeight="34.0" prefWidth="243.0" />
-      <Label layoutX="856.0" layoutY="420.0" prefHeight="34.0" prefWidth="243.0" />
-      <Label layoutX="303.0" layoutY="467.0" prefHeight="34.0" prefWidth="243.0" />
-      <Label layoutX="303.0" layoutY="398.0" prefHeight="34.0" prefWidth="243.0" />
-      <Label layoutX="303.0" layoutY="342.0" prefHeight="34.0" prefWidth="243.0" />
-      <Label layoutX="303.0" layoutY="282.0" prefHeight="34.0" prefWidth="243.0" />
-      <Button layoutX="438.0" layoutY="168.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="118.0" text="Search Tenants">
+      <Label fx:id="locationAreaLabel" layoutX="856.0" layoutY="271.0" prefHeight="34.0" prefWidth="243.0" />
+      <Label fx:id="monthlyRentLabel" layoutX="856.0" layoutY="349.0" prefHeight="34.0" prefWidth="243.0" />
+      <Label fx:id="flatRoomShopLabel" layoutX="856.0" layoutY="420.0" prefHeight="34.0" prefWidth="243.0" />
+      <Label fx:id="phoneNumberLabel" layoutX="303.0" layoutY="467.0" prefHeight="34.0" prefWidth="243.0" />
+      <Label fx:id="advanceLabel" layoutX="303.0" layoutY="398.0" prefHeight="34.0" prefWidth="243.0" />
+      <Label fx:id="idLabel" layoutX="303.0" layoutY="342.0" prefHeight="34.0" prefWidth="243.0" />
+      <Label fx:id="nameLabel" layoutX="303.0" layoutY="282.0" prefHeight="34.0" prefWidth="243.0" />
+      <Button layoutX="438.0" layoutY="168.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="57.0" prefWidth="118.0" text="Search Tenants">
          <font>
             <Font name="Segoe UI Bold" size="13.0" />
          </font>
@@ -104,7 +104,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField layoutX="157.0" layoutY="155.0" prefHeight="26.0" prefWidth="204.0" />
-      <TextField layoutX="157.0" layoutY="210.0" prefWidth="204.0" />
+      <TextField fx:id="nameTF" layoutX="157.0" layoutY="155.0" prefHeight="26.0" prefWidth="204.0" />
+      <TextField fx:id="idTF" layoutX="157.0" layoutY="210.0" prefWidth="204.0" />
    </children>
 </AnchorPane>

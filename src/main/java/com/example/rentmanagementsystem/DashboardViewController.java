@@ -20,7 +20,13 @@ public class DashboardViewController
 
 
     @javafx.fxml.FXML
-    public void tenantsButtonOnAction(ActionEvent actionEvent) {
+    public void tenantsButtonOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tenants-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage nextStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        nextStage.setTitle("Tenants!");
+        nextStage.setScene(scene);
+        nextStage.show();
     }
 
     @javafx.fxml.FXML
@@ -29,10 +35,17 @@ public class DashboardViewController
 
     @javafx.fxml.FXML
     public void rentPaymentsButtonOnAction(ActionEvent actionEvent) {
+
     }
 
     @javafx.fxml.FXML
-    public void addTenantsButtonOnAction(ActionEvent actionEvent) {
+    public void addTenantsButtonOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("add-tenants-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage nextStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        nextStage.setTitle("Add Tenants!");
+        nextStage.setScene(scene);
+        nextStage.show();
     }
 
     @javafx.fxml.FXML

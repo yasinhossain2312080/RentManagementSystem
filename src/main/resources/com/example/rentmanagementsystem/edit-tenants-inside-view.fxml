@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: linear-gradient(to bottom right, #2C7A7B, #16353D);" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rentmanagementsystem.EditTenantsViewController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: linear-gradient(to bottom right, #2C7A7B, #16353D);" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rentmanagementsystem.EditTenantsInsideViewController">
    <children>
       <Label layoutX="473.0" layoutY="33.0" style="-fx-text-fill: #F5F5F5;" text="Rent Management System">
          <font>
@@ -37,59 +37,52 @@
             </RadialGradient>
          </textFill>
       </Label>
-      <Label layoutX="187.0" layoutY="285.0" text="Name" textFill="#d4d4d4">
+      <Label layoutX="194.0" layoutY="311.0" text="Name" textFill="#d4d4d4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="187.0" layoutY="349.0" text="Id" textFill="#d4d4d4">
+      <Label layoutX="194.0" layoutY="366.0" text="Id" textFill="#d4d4d4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="712.0" layoutY="427.0" text="Flat/Room/Dokan" textFill="#d4d4d4">
+      <Label layoutX="698.0" layoutY="427.0" text="Flat/Room/Dokan" textFill="#d4d4d4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="181.0" layoutY="474.0" text="Phone Number" textFill="#d4d4d4">
+      <Label layoutX="188.0" layoutY="488.0" text="Phone Number" textFill="#d4d4d4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="726.0" layoutY="278.0" text="Location/Area" textFill="#d4d4d4">
+      <Label layoutX="698.0" layoutY="311.0" text="Location/Area" textFill="#d4d4d4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="726.0" layoutY="356.0" text="Monthly Rent" textFill="#d4d4d4">
+      <Label layoutX="699.0" layoutY="366.0" text="Monthly Rent" textFill="#d4d4d4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="187.0" layoutY="405.0" text="Advance" textFill="#d4d4d4">
+      <Label layoutX="194.0" layoutY="427.0" text="Advance" textFill="#d4d4d4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="504.0" layoutY="581.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="162.0" text="Update">
+      <Button layoutX="559.0" layoutY="623.0" mnemonicParsing="false" onAction="#updateButtonOnAction" prefHeight="41.0" prefWidth="162.0" text="Update">
          <font>
             <Font name="Segoe UI Bold" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="504.0" layoutY="651.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="162.0" text="Back">
+      <Button layoutX="1190.0" layoutY="18.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="30.0" prefWidth="76.0" text="Back">
          <font>
             <Font name="Segoe UI Bold" size="16.0" />
          </font>
       </Button>
-      <Label layoutX="856.0" layoutY="271.0" prefHeight="34.0" prefWidth="243.0" />
-      <Label layoutX="856.0" layoutY="349.0" prefHeight="34.0" prefWidth="243.0" />
-      <Label layoutX="856.0" layoutY="420.0" prefHeight="34.0" prefWidth="243.0" />
-      <Label layoutX="303.0" layoutY="467.0" prefHeight="34.0" prefWidth="243.0" />
-      <Label layoutX="303.0" layoutY="398.0" prefHeight="34.0" prefWidth="243.0" />
-      <Label layoutX="303.0" layoutY="342.0" prefHeight="34.0" prefWidth="243.0" />
-      <Label layoutX="303.0" layoutY="282.0" prefHeight="34.0" prefWidth="243.0" />
-      <Button layoutX="438.0" layoutY="168.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="118.0" text="Search Tenants">
+      <Button layoutX="438.0" layoutY="168.0" mnemonicParsing="false" onAction="#searchTenantsButtonOnAction" prefHeight="57.0" prefWidth="118.0" text="Search Tenants">
          <font>
             <Font name="Segoe UI Bold" size="13.0" />
          </font>
@@ -104,7 +97,14 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField layoutX="157.0" layoutY="155.0" prefHeight="26.0" prefWidth="204.0" />
-      <TextField layoutX="157.0" layoutY="210.0" prefWidth="204.0" />
+      <TextField fx:id="nameTF" layoutX="157.0" layoutY="155.0" prefHeight="26.0" prefWidth="204.0" />
+      <TextField fx:id="idTF" layoutX="157.0" layoutY="210.0" prefWidth="204.0" />
+      <TextField fx:id="editNameTF" layoutX="303.0" layoutY="308.0" prefHeight="26.0" prefWidth="297.0" />
+      <TextField fx:id="phoneNumberTF" layoutX="303.0" layoutY="485.0" prefHeight="26.0" prefWidth="297.0" />
+      <TextField fx:id="editIDTF" layoutX="303.0" layoutY="364.0" prefHeight="26.0" prefWidth="297.0" />
+      <TextField fx:id="advanceTF" layoutX="303.0" layoutY="424.0" prefHeight="26.0" prefWidth="297.0" />
+      <TextField fx:id="locationAreaTF" layoutX="827.0" layoutY="308.0" prefHeight="26.0" prefWidth="297.0" />
+      <TextField fx:id="monthlyRentTF" layoutX="827.0" layoutY="364.0" prefHeight="26.0" prefWidth="297.0" />
+      <TextField fx:id="flatRoomShopTF" layoutX="827.0" layoutY="424.0" prefHeight="26.0" prefWidth="297.0" />
    </children>
 </AnchorPane>

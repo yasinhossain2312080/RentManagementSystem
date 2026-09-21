@@ -20,18 +20,18 @@
             <Font name="Segoe UI Bold" size="18.0" />
          </font>
       </Label>
-      <TableView layoutX="12.0" layoutY="208.0" prefHeight="320.0" prefWidth="1254.0">
+      <TableView fx:id="tenantsInformationTableView" layoutX="12.0" layoutY="208.0" prefHeight="320.0" prefWidth="1254.0">
         <columns>
-          <TableColumn prefWidth="113.60000324249268" text="ID" />
-          <TableColumn prefWidth="231.2000274658203" text="NAME" />
-            <TableColumn prefWidth="154.39996337890625" text="FLAT/ROOM/DOKAN" />
-            <TableColumn prefWidth="223.20001220703125" text="PHONE NUMBER" />
-            <TableColumn prefWidth="217.5999755859375" text="LOCATION/AREA" />
-            <TableColumn prefWidth="162.4000244140625" text="MONTHLY RENT" />
-            <TableColumn prefWidth="154.39990234375" text="ADVANCED" />
+          <TableColumn fx:id="idTC" prefWidth="113.60000324249268" text="ID" />
+          <TableColumn fx:id="nameTC" prefWidth="231.2000274658203" text="NAME" />
+            <TableColumn fx:id="flatRoomShopTC" prefWidth="154.39996337890625" text="FLAT/ROOM/DOKAN" />
+            <TableColumn fx:id="phoneNumberTC" prefWidth="223.20001220703125" text="PHONE NUMBER" />
+            <TableColumn fx:id="locationAreaTC" prefWidth="217.5999755859375" text="LOCATION/AREA" />
+            <TableColumn fx:id="monthlyRentTC" prefWidth="162.4000244140625" text="MONTHLY RENT" />
+            <TableColumn fx:id="advancedTC" prefWidth="154.39990234375" text="ADVANCED" />
         </columns>
       </TableView>
-      <Button layoutX="574.0" layoutY="589.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="129.0" text="Click">
+      <Button layoutX="595.0" layoutY="589.0" mnemonicParsing="false" onAction="#clickButtonOnAction" prefHeight="46.0" prefWidth="129.0" text="Click">
          <font>
             <Font size="21.0" />
          </font>
@@ -41,21 +41,26 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="192.0" layoutY="599.0" prefHeight="26.0" prefWidth="286.0" />
-      <Button layoutX="1147.0" layoutY="85.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="96.0" text="Back">
+      <TextField fx:id="searchTenantsTF" layoutX="192.0" layoutY="599.0" prefHeight="26.0" prefWidth="286.0" />
+      <Button layoutX="1170.0" layoutY="23.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="27.0" prefWidth="96.0" text="Back">
          <font>
             <Font name="Segoe UI Bold" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="999.0" layoutY="608.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" text="Edit">
+      <Button layoutX="999.0" layoutY="608.0" mnemonicParsing="false" onAction="#editButtonOnAction" prefHeight="34.0" prefWidth="96.0" text="Edit">
          <font>
             <Font name="Segoe UI Bold Italic" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="1125.0" layoutY="608.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" text="Delete">
+      <Button layoutX="1125.0" layoutY="608.0" mnemonicParsing="false" onAction="#deleteButtonOnAction" prefHeight="34.0" prefWidth="96.0" text="Delete">
          <font>
             <Font name="Segoe UI Bold Italic" size="13.0" />
          </font>
       </Button>
+      <Label layoutX="606.0" layoutY="73.0" style="-fx-text-fill: #F5F5F5;" text="Tenants">
+         <font>
+            <Font name="Segoe UI Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
