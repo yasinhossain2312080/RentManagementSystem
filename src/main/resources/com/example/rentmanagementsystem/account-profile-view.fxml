@@ -33,13 +33,13 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField editable="false" layoutX="201.0" layoutY="88.0" prefHeight="25.0" prefWidth="267.0" />
+            <TextField fx:id="propertyNameTF" layoutX="201.0" layoutY="88.0" prefHeight="25.0" prefWidth="267.0" />
             <Label layoutX="70.0" layoutY="129.0" prefHeight="23.0" prefWidth="98.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Owner Name :">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField editable="false" layoutX="201.0" layoutY="128.0" prefHeight="25.0" prefWidth="267.0" />
+            <TextField fx:id="ownerNameTF" layoutX="201.0" layoutY="128.0" prefHeight="25.0" prefWidth="267.0" />
             <Circle fill="#ececec" layoutX="51.0" layoutY="141.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
             <Label layoutX="70.0" layoutY="169.0" prefHeight="23.0" prefWidth="122.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Property Address :">
                <font>
@@ -47,47 +47,47 @@
                </font>
             </Label>
             <Circle fill="#ececec" layoutX="51.0" layoutY="181.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-            <TextField editable="false" layoutX="201.0" layoutY="168.0" prefHeight="25.0" prefWidth="267.0" />
+            <TextField fx:id="propertyAddressTF" layoutX="201.0" layoutY="168.0" prefHeight="25.0" prefWidth="267.0" />
             <Label layoutX="70.0" layoutY="209.0" prefHeight="23.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Contact Number :">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <Circle fill="#ececec" layoutX="51.0" layoutY="221.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-            <TextField editable="false" layoutX="201.0" layoutY="208.0" prefHeight="25.0" prefWidth="267.0" />
+            <TextField fx:id="contactNumberTF" layoutX="201.0" layoutY="208.0" prefHeight="25.0" prefWidth="267.0" />
             <Label layoutX="70.0" layoutY="249.0" prefHeight="23.0" prefWidth="82.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Total Floors :">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <Circle fill="#ececec" layoutX="51.0" layoutY="261.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-            <TextField editable="false" layoutX="201.0" layoutY="248.0" prefHeight="25.0" prefWidth="267.0" />
+            <TextField fx:id="totalFloorsTF" layoutX="201.0" layoutY="248.0" prefHeight="25.0" prefWidth="267.0" />
             <Label layoutX="70.0" layoutY="286.0" prefHeight="23.0" prefWidth="82.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Total Shop :">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <Circle fill="#ececec" layoutX="51.0" layoutY="298.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-            <TextField editable="false" layoutX="201.0" layoutY="286.0" prefHeight="25.0" prefWidth="267.0" />
+            <TextField fx:id="totalShopTF" layoutX="201.0" layoutY="286.0" prefHeight="25.0" prefWidth="267.0" />
             <Label layoutX="70.0" layoutY="322.0" prefHeight="23.0" prefWidth="111.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Total Garments : ">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <Circle fill="#ececec" layoutX="51.0" layoutY="334.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-            <TextField editable="false" layoutX="201.0" layoutY="322.0" prefHeight="25.0" prefWidth="267.0" />
+            <TextField fx:id="totalGarmentsTF" layoutX="201.0" layoutY="322.0" prefHeight="25.0" prefWidth="267.0" />
          </children>
       </Pane>
-      <Button layoutX="550.0" layoutY="568.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="179.0" text="Update Profile">
+      <Button layoutX="550.0" layoutY="568.0" mnemonicParsing="false" onAction="#updateProfileButtonOnAction" prefHeight="38.0" prefWidth="179.0" text="Update Profile">
          <font>
             <Font name="Segoe UI Bold Italic" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="487.0" layoutY="672.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="303.0" text="Could you change your password?">
+      <Button layoutX="487.0" layoutY="672.0" mnemonicParsing="false" onAction="#couldYouChangeYourPasswordButtonOnAction" prefHeight="0.0" prefWidth="303.0" text="Could you change your password?">
          <font>
             <Font name="Segoe UI Bold Italic" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="1177.0" layoutY="21.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Back" />
+      <Button layoutX="1177.0" layoutY="21.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="26.0" prefWidth="82.0" text="Back" />
    </children>
 </AnchorPane>

@@ -15,7 +15,13 @@ public class DashboardViewController
     }
 
     @javafx.fxml.FXML
-    public void historyButtonOnAction(ActionEvent actionEvent) {
+    public void historyButtonOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("history-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage nextStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        nextStage.setTitle("History!");
+        nextStage.setScene(scene);
+        nextStage.show();
     }
 
 
@@ -30,11 +36,24 @@ public class DashboardViewController
     }
 
     @javafx.fxml.FXML
-    public void settingsButtonOnAction(ActionEvent actionEvent) {
+    public void settingsButtonOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage nextStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        nextStage.setTitle("Settings!");
+        nextStage.setScene(scene);
+        nextStage.show();
+
     }
 
     @javafx.fxml.FXML
-    public void rentPaymentsButtonOnAction(ActionEvent actionEvent) {
+    public void rentPaymentsButtonOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("rent-payments-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage nextStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        nextStage.setTitle("Rent Payments!");
+        nextStage.setScene(scene);
+        nextStage.show();
 
     }
 

@@ -8,7 +8,6 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: linear-gradient(to bottom right, #2C7A7B, #16353D);" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rentmanagementsystem.SettingsViewController">
    <children>
       <Label layoutX="454.0" layoutY="23.0" style="-fx-text-fill: #F5F5F5;" text="Rent Management System">
@@ -24,7 +23,7 @@
       <Pane layoutX="311.0" layoutY="103.0" prefHeight="586.0" prefWidth="662.0" style="-fx-background-color: #0E2227; -fx-background-radius: 15;">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="46.0" layoutY="41.0" prefHeight="17.0" prefWidth="104.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;" text="👤 ACCOUNT" />
-            <Button layoutX="79.0" layoutY="81.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" text="Profile &amp; change Password" />
+            <Button layoutX="79.0" layoutY="81.0" mnemonicParsing="false" onAction="#profileAndChangePasswordButtonOnAction" prefHeight="25.0" prefWidth="240.0" text="Profile &amp; change Password" />
             <Circle fill="#ececec" layoutX="53.0" layoutY="94.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="46.0" layoutY="137.0" prefHeight="17.0" prefWidth="163.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;" text="🏠 Property Information">
                <font>
@@ -33,34 +32,34 @@
             </Label>
             <Circle fill="#ececec" layoutX="53.0" layoutY="196.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
             <Label layoutX="72.0" layoutY="185.0" prefHeight="23.0" prefWidth="91.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Property Name :" />
-            <TextField editable="false" layoutX="186.0" layoutY="184.0" prefHeight="25.0" prefWidth="267.0" />
+            <TextField fx:id="propertyNameTF" editable="false" layoutX="186.0" layoutY="184.0" prefHeight="25.0" prefWidth="267.0" />
             <Label layoutX="72.0" layoutY="225.0" prefHeight="23.0" prefWidth="91.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Owner Name :" />
-            <TextField editable="false" layoutX="186.0" layoutY="224.0" prefHeight="25.0" prefWidth="267.0" />
+            <TextField fx:id="ownerNameTF" editable="false" layoutX="186.0" layoutY="224.0" prefHeight="25.0" prefWidth="267.0" />
             <Circle fill="#ececec" layoutX="53.0" layoutY="237.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
             <Label layoutX="72.0" layoutY="265.0" prefHeight="23.0" prefWidth="104.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Property Address :" />
             <Circle fill="#ececec" layoutX="53.0" layoutY="277.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-            <TextField editable="false" layoutX="186.0" layoutY="264.0" prefHeight="25.0" prefWidth="267.0" />
+            <TextField fx:id="propertyAddressTF" editable="false" layoutX="186.0" layoutY="264.0" prefHeight="25.0" prefWidth="267.0" />
             <Label layoutX="72.0" layoutY="305.0" prefHeight="23.0" prefWidth="104.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Contact Number :" />
             <Circle fill="#ececec" layoutX="53.0" layoutY="317.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-            <TextField editable="false" layoutX="186.0" layoutY="305.0" prefHeight="25.0" prefWidth="267.0" />
+            <TextField fx:id="contactNumberTF" editable="false" layoutX="186.0" layoutY="305.0" prefHeight="25.0" prefWidth="267.0" />
             <Label layoutX="72.0" layoutY="347.0" prefHeight="23.0" prefWidth="70.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Total Floors :" />
             <Circle fill="#ececec" layoutX="53.0" layoutY="359.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-            <TextField editable="false" layoutX="186.0" layoutY="346.0" prefHeight="25.0" prefWidth="267.0" />
+            <TextField fx:id="totalFloorsTF" editable="false" layoutX="186.0" layoutY="346.0" prefHeight="25.0" prefWidth="267.0" />
             <Label layoutX="72.0" layoutY="386.0" prefHeight="23.0" prefWidth="70.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Total Shop :" />
             <Circle fill="#ececec" layoutX="53.0" layoutY="398.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-            <TextField editable="false" layoutX="186.0" layoutY="385.0" prefHeight="25.0" prefWidth="267.0" />
+            <TextField fx:id="totalShopTF" editable="false" layoutX="186.0" layoutY="385.0" prefHeight="25.0" prefWidth="267.0" />
             <Label layoutX="72.0" layoutY="426.0" prefHeight="23.0" prefWidth="91.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 2;" text="Total Garments : " />
             <Circle fill="#ececec" layoutX="53.0" layoutY="438.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-            <TextField editable="false" layoutX="186.0" layoutY="425.0" prefHeight="25.0" prefWidth="267.0" />
+            <TextField fx:id="totalGarmentsTF" editable="false" layoutX="186.0" layoutY="425.0" prefHeight="25.0" prefWidth="267.0" />
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" layoutY="482.0" prefHeight="17.0" prefWidth="163.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 8;" text="💾 Data">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="83.0" layoutY="518.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="240.0" text="Backup &amp; Restore" />
+            <Button layoutX="83.0" layoutY="518.0" mnemonicParsing="false" onAction="#backupAndRestoreButtonOnAction" prefHeight="25.0" prefWidth="240.0" text="Backup &amp; Restore" />
             <Circle fill="#ececec" layoutX="55.0" layoutY="531.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </Pane>
-      <Button layoutX="1131.0" layoutY="42.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" text="Back" />
+      <Button layoutX="1131.0" layoutY="42.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="26.0" prefWidth="116.0" text="Back" />
    </children>
 </AnchorPane>
