@@ -1,14 +1,18 @@
 package com.example.rentmanagementsystem;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class EditTenantsViewController
 {
@@ -30,20 +34,64 @@ public class EditTenantsViewController
     private Label advanceLabel;
     @javafx.fxml.FXML
     private Label nameLabel;
+    private Tenants selectedTenant;
 
     @javafx.fxml.FXML
     public void initialize() {
     }
 
+
+    @javafx.fxml.FXML
+    public void searchButtonOnAction(ActionEvent actionEvent) {
+        String searchName = nameTF.getText().trim();
+        String searchId = idTF.getText().trim();
+
+        if (searchId.isEmpty() && searchName.isEmpty()){
+            Methods.Alert("Please Write NAME or ID");
+            return;
+        }
+
+        ArrayList<Object> objects = BinaryFileManager.ReadObjects("Tenants.bin");
+        boolean found = false;
+        for(Object object :objects){
+            Tenants tenant = (Tenants)object;
+            if (tenant.getName().equals(searchName)||
+            tenant.getId().equals(searchId)){
+
+                this.selectedTenant = tenant;
+
+                nameLabel.setText(tenant.getName());
+                idLabel.setText(tenant.getId());
+                advanceLabel.setText(String.valueOf(tenant.getAdvance()));
+                phoneNumberLabel.setText(String.valueOf(tenant.getPhoneNumber()));
+                locationAreaLabel.setText(selectedTenant.getLocation());
+                monthlyRentLabel.setText(String.valueOf(tenant.getMonthlyRent()));
+                flatRoomShopLabel.setText(selectedTenant.getFlat());
+
+                found = true;
+                break;
+            }
+        }
+        if(!found){
+            Methods.Alert("TENANT NOT FOUND!!");
+        }
+    }
+
     @javafx.fxml.FXML
     public void doYouWantToEditButtonOnAction(ActionEvent actionEvent) throws IOException {
+        if (selectedTenant == null) {
+            Methods.Alert("Please search for a tenant first");
+            return;
+        }
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("edit-tenants-inside-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Parent root = fxmlLoader.load();
+        EditTenantsInsideViewController controller = fxmlLoader.getController();
+        controller.setTenant(selectedTenant);
+        Scene scene = new Scene(root);
         Stage nextStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         nextStage.setTitle("Edit Tenants!");
         nextStage.setScene(scene);
         nextStage.show();
-
     }
 
     @javafx.fxml.FXML
@@ -54,11 +102,5 @@ public class EditTenantsViewController
         nextStage.setTitle("Tenants!");
         nextStage.setScene(scene);
         nextStage.show();
-
-    }
-
-    @javafx.fxml.FXML
-    public void searchButtonOnAction(ActionEvent actionEvent) {
-
     }
 }

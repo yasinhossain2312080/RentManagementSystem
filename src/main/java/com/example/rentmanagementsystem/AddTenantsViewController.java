@@ -1,6 +1,7 @@
 package com.example.rentmanagementsystem;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -9,34 +10,85 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static java.lang.Integer.parseInt;
+
 public class AddTenantsViewController
 {
-    @javafx.fxml.FXML
+    @FXML
     private TextField locationAreaTF;
-    @javafx.fxml.FXML
+    @FXML
     private TextField advanceTF;
-    @javafx.fxml.FXML
+    @FXML
     private TextField nameTF;
-    @javafx.fxml.FXML
+    @FXML
     private TextField monthlyRentTF;
-    @javafx.fxml.FXML
+    @FXML
     private TextField phoneNumberTF;
-    @javafx.fxml.FXML
+    @FXML
     private TextField idTF;
-    @javafx.fxml.FXML
+    @FXML
     private TextField flatRoomShopTF;
 
-    @javafx.fxml.FXML
+    @FXML
     public void initialize() {
 
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void addTenantsButtonOnAction(ActionEvent actionEvent) {
+        String name = nameTF.getText();
+        String id = idTF.getText();
+        String location = locationAreaTF.getText();
+        String flat = flatRoomShopTF.getText();
+        String phoneNumber = phoneNumberTF.getText();
 
+        double advance = 0;
+        double monthlyRent = 0;
+
+        try{
+            advance = Double.parseDouble(advanceTF.getText());
+            monthlyRent = Double.parseDouble(monthlyRentTF.getText());
+        }catch (NumberFormatException e){
+            Methods.Alert("Advance and Monthly Rent must be number.");
+            return;
+        }
+
+        boolean digitFound = false;
+        for(int i =0 ; i <  nameTF.getText().length(); i++){
+            if(nameTF.getText().charAt(i) >='0' && nameTF.getText().charAt(i) <= '9'){
+                digitFound = true;
+            }
+        }
+
+        boolean CharacterFound = false;
+        for(int i = 0 ; i < advanceTF.getText().length(); i++){
+            if (advanceTF.getText().charAt(i)>='a' && advanceTF.getText().charAt(i)<='z' ||
+            advanceTF.getText().charAt(i) >= 'A' && advanceTF.getText().charAt(i) <= 'Z'){
+                CharacterFound = true;
+            }
+        }
+
+
+        if(name.isEmpty() || id.isEmpty() || location.isEmpty() || flat.isEmpty() || digitFound || CharacterFound){
+            Methods.Alert("please FillUp this option first");
+            return;
+        }
+
+        Tenants t1 = new Tenants(
+                name,
+                id,
+                location,
+                flat,
+                phoneNumber,
+                advance,
+                monthlyRent
+        );
+
+        BinaryFileManager.writeObject("Tenants.bin",t1);
+        Methods.Alert("Tenant Added Successfully..");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void backButtonOnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());

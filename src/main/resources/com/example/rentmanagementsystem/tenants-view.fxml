@@ -15,12 +15,12 @@
             <Font name="Segoe UI Bold" size="27.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="52.0" layoutY="131.0" prefHeight="19.0" prefWidth="206.0" style="-fx-background-color: WHITE;" text="Tenants Information :-" textFill="#6e231cc4">
+      <Label alignment="CENTER" layoutX="53.0" layoutY="180.0" prefHeight="19.0" prefWidth="206.0" style="-fx-background-color: WHITE;" text="Tenants Information :-" textFill="#6e231cc4">
          <font>
             <Font name="Segoe UI Bold" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="tenantsInformationTableView" layoutX="12.0" layoutY="208.0" prefHeight="320.0" prefWidth="1254.0">
+      <TableView fx:id="tenantsInformationTableView" layoutX="13.0" layoutY="257.0" prefHeight="159.0" prefWidth="1254.0">
         <columns>
           <TableColumn fx:id="idTC" prefWidth="113.60000324249268" text="ID" />
           <TableColumn fx:id="nameTC" prefWidth="231.2000274658203" text="NAME" />
@@ -31,28 +31,28 @@
             <TableColumn fx:id="advancedTC" prefWidth="154.39990234375" text="ADVANCED" />
         </columns>
       </TableView>
-      <Button layoutX="595.0" layoutY="589.0" mnemonicParsing="false" onAction="#clickButtonOnAction" prefHeight="46.0" prefWidth="129.0" text="Click">
+      <Button layoutX="555.0" layoutY="578.0" mnemonicParsing="false" onAction="#clickButtonOnAction" prefHeight="46.0" prefWidth="150.0" text="Click">
          <font>
-            <Font size="21.0" />
+            <Font name="System Bold Italic" size="21.0" />
          </font>
       </Button>
-      <Label layoutX="52.0" layoutY="598.0" text="Search Tenants" textFill="#ff9355">
+      <Label layoutX="53.0" layoutY="588.0" text="Search Tenants" textFill="#ff9355">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="searchTenantsTF" layoutX="192.0" layoutY="599.0" prefHeight="26.0" prefWidth="286.0" />
+      <TextField fx:id="searchTenantsTF" layoutX="192.0" layoutY="579.0" prefHeight="46.0" prefWidth="286.0" />
       <Button layoutX="1170.0" layoutY="23.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="27.0" prefWidth="96.0" text="Back">
          <font>
             <Font name="Segoe UI Bold" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="999.0" layoutY="608.0" mnemonicParsing="false" onAction="#editButtonOnAction" prefHeight="34.0" prefWidth="96.0" text="Edit">
+      <Button layoutX="975.0" layoutY="608.0" mnemonicParsing="false" onAction="#editButtonOnAction" prefHeight="34.0" prefWidth="120.0" text="Edit">
          <font>
             <Font name="Segoe UI Bold Italic" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="1125.0" layoutY="608.0" mnemonicParsing="false" onAction="#deleteButtonOnAction" prefHeight="34.0" prefWidth="96.0" text="Delete">
+      <Button layoutX="1125.0" layoutY="608.0" mnemonicParsing="false" onAction="#deleteButtonOnAction" prefHeight="34.0" prefWidth="120.0" text="Delete">
          <font>
             <Font name="Segoe UI Bold Italic" size="13.0" />
          </font>

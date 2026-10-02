@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class EditTenantsInsideViewController
 {
@@ -20,15 +21,42 @@ public class EditTenantsInsideViewController
     @javafx.fxml.FXML
     private TextField locationAreaTF;
     @javafx.fxml.FXML
-    private TextField nameTF;
-    @javafx.fxml.FXML
     private TextField monthlyRentTF;
     @javafx.fxml.FXML
     private TextField phoneNumberTF;
     @javafx.fxml.FXML
-    private TextField idTF;
-    @javafx.fxml.FXML
     private TextField flatRoomShopTF;
+
+    private Tenants selectedTenant;
+
+    public void setTenant(Tenants tenant) {
+
+        this.selectedTenant = tenant;
+
+        editNameTF.setText(tenant.getName());
+
+        editIDTF.setText(tenant.getId());
+
+        advanceTF.setText(
+                String.valueOf(tenant.getAdvance())
+        );
+
+        phoneNumberTF.setText(tenant.getPhoneNumber()
+        );
+
+        locationAreaTF.setText(
+                tenant.getLocation()
+        );
+
+        flatRoomShopTF.setText(
+                tenant.getFlat()
+        );
+
+        monthlyRentTF.setText(
+                String.valueOf(tenant.getMonthlyRent())
+        );
+    }
+
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -36,6 +64,52 @@ public class EditTenantsInsideViewController
 
     @javafx.fxml.FXML
     public void updateButtonOnAction(ActionEvent actionEvent) {
+        if(selectedTenant == null){
+            Methods.Alert("NO TENANT SELECTED");
+        }
+        String name = editNameTF.getText().trim();
+        String id = editIDTF.getText().trim();
+        String location = locationAreaTF.getText().trim();
+        String flat = flatRoomShopTF.getText().trim();
+        String advance = advanceTF.getText().trim();
+        String monthlyRentText = monthlyRentTF.getText().trim();
+        String phoneNumber = phoneNumberTF.getText().trim();
+
+        if(name.isEmpty() || id.isEmpty() || location.isEmpty() || flat.isEmpty() || advance.isEmpty() || monthlyRentText.isEmpty()||phoneNumber.isEmpty()){
+            Methods.Alert("Please All Option..");
+        }
+        double advanced;
+        double monthlyRent;
+        try{
+            advanced = Double.parseDouble(advance);
+            monthlyRent = Double.parseDouble(monthlyRentText);
+        }catch (NumberFormatException e){
+            Methods.Alert("Advance and Monthly Rent and Phone Number must be numbers.");
+            return;
+        }
+        Tenants updatedTenant = new Tenants(
+                name,id,location,flat,phoneNumber,advanced,monthlyRent
+        );
+        ArrayList<Object>objects = BinaryFileManager.ReadObjects("Tenants.bin");
+
+        //New List
+        ArrayList<Object>updateList = new ArrayList<>();
+
+        for(Object object : objects){
+            Tenants tenant = (Tenants) object;
+            if(tenant.getId().equals(updatedTenant.getId())){
+                updateList.add(updatedTenant);
+            }
+            else{
+                updateList.add(tenant);
+            }
+        }
+        // Write updated list back to file
+        BinaryFileManager.writeAllObject("Tenants.bin",updateList);
+
+        // Update selected tenant
+        selectedTenant = updatedTenant;
+        Methods.Alert("TENANT UPDATE SUCCESSFULLY.");
     }
 
     @javafx.fxml.FXML
@@ -46,9 +120,5 @@ public class EditTenantsInsideViewController
         nextStage.setTitle("Edit Tenants View!");
         nextStage.setScene(scene);
         nextStage.show();
-    }
-
-    @javafx.fxml.FXML
-    public void searchTenantsButtonOnAction(ActionEvent actionEvent) {
     }
 }

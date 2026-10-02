@@ -37,42 +37,42 @@
             </RadialGradient>
          </textFill>
       </Label>
-      <Label layoutX="194.0" layoutY="311.0" text="Name" textFill="#d4d4d4">
+      <Label layoutX="145.0" layoutY="207.0" text="Name" textFill="#d4d4d4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="194.0" layoutY="366.0" text="Id" textFill="#d4d4d4">
+      <Label layoutX="145.0" layoutY="277.0" text="Id" textFill="#d4d4d4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="698.0" layoutY="427.0" text="Flat/Room/Dokan" textFill="#d4d4d4">
+      <Label layoutX="705.0" layoutY="410.0" text="Flat/Room/Dokan" textFill="#d4d4d4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="188.0" layoutY="488.0" text="Phone Number" textFill="#d4d4d4">
+      <Label layoutX="139.0" layoutY="435.0" text="Phone Number" textFill="#d4d4d4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="698.0" layoutY="311.0" text="Location/Area" textFill="#d4d4d4">
+      <Label layoutX="705.0" layoutY="204.0" text="Location/Area" textFill="#d4d4d4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="699.0" layoutY="366.0" text="Monthly Rent" textFill="#d4d4d4">
+      <Label layoutX="705.0" layoutY="303.0" text="Monthly Rent" textFill="#d4d4d4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="194.0" layoutY="427.0" text="Advance" textFill="#d4d4d4">
+      <Label layoutX="145.0" layoutY="360.0" text="Advance" textFill="#d4d4d4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="559.0" layoutY="623.0" mnemonicParsing="false" onAction="#updateButtonOnAction" prefHeight="41.0" prefWidth="162.0" text="Update">
+      <Button layoutX="559.0" layoutY="591.0" mnemonicParsing="false" onAction="#updateButtonOnAction" prefHeight="56.0" prefWidth="162.0" text="Update">
          <font>
             <Font name="Segoe UI Bold" size="16.0" />
          </font>
@@ -82,29 +82,12 @@
             <Font name="Segoe UI Bold" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="438.0" layoutY="168.0" mnemonicParsing="false" onAction="#searchTenantsButtonOnAction" prefHeight="57.0" prefWidth="118.0" text="Search Tenants">
-         <font>
-            <Font name="Segoe UI Bold" size="13.0" />
-         </font>
-      </Button>
-      <Label layoutX="95.0" layoutY="156.0" prefHeight="22.0" prefWidth="48.0" text="NAME" textFill="#ffeeed">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="95.0" layoutY="212.0" prefHeight="18.0" prefWidth="40.0" text="ID" textFill="#ffeeed">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <TextField fx:id="nameTF" layoutX="157.0" layoutY="155.0" prefHeight="26.0" prefWidth="204.0" />
-      <TextField fx:id="idTF" layoutX="157.0" layoutY="210.0" prefWidth="204.0" />
-      <TextField fx:id="editNameTF" layoutX="303.0" layoutY="308.0" prefHeight="26.0" prefWidth="297.0" />
-      <TextField fx:id="phoneNumberTF" layoutX="303.0" layoutY="485.0" prefHeight="26.0" prefWidth="297.0" />
-      <TextField fx:id="editIDTF" layoutX="303.0" layoutY="364.0" prefHeight="26.0" prefWidth="297.0" />
-      <TextField fx:id="advanceTF" layoutX="303.0" layoutY="424.0" prefHeight="26.0" prefWidth="297.0" />
-      <TextField fx:id="locationAreaTF" layoutX="827.0" layoutY="308.0" prefHeight="26.0" prefWidth="297.0" />
-      <TextField fx:id="monthlyRentTF" layoutX="827.0" layoutY="364.0" prefHeight="26.0" prefWidth="297.0" />
-      <TextField fx:id="flatRoomShopTF" layoutX="827.0" layoutY="424.0" prefHeight="26.0" prefWidth="297.0" />
+      <TextField fx:id="editNameTF" layoutX="254.0" layoutY="204.0" prefHeight="26.0" prefWidth="297.0" />
+      <TextField fx:id="phoneNumberTF" layoutX="254.0" layoutY="432.0" prefHeight="26.0" prefWidth="297.0" />
+      <TextField fx:id="editIDTF" layoutX="254.0" layoutY="275.0" prefHeight="26.0" prefWidth="297.0" />
+      <TextField fx:id="advanceTF" layoutX="254.0" layoutY="357.0" prefHeight="26.0" prefWidth="297.0" />
+      <TextField fx:id="locationAreaTF" layoutX="834.0" layoutY="201.0" prefHeight="26.0" prefWidth="297.0" />
+      <TextField fx:id="monthlyRentTF" layoutX="833.0" layoutY="301.0" prefHeight="26.0" prefWidth="297.0" />
+      <TextField fx:id="flatRoomShopTF" layoutX="834.0" layoutY="407.0" prefHeight="26.0" prefWidth="297.0" />
    </children>
 </AnchorPane>

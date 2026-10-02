@@ -32,7 +32,7 @@
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="516.0" layoutY="552.0" mnemonicParsing="false" onAction="#settingsButtonOnAction" prefHeight="30.0" prefWidth="246.0" text="Settings">
+      <Button layoutX="516.0" layoutY="630.0" mnemonicParsing="false" onAction="#settingsButtonOnAction" prefHeight="30.0" prefWidth="246.0" text="Settings">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
@@ -47,5 +47,10 @@
             <Font name="Segoe UI Bold" size="16.0" />
          </font>
       </Label>
+      <Button layoutX="516.0" layoutY="548.0" mnemonicParsing="false" onAction="#tenantsListButtonOnAction" prefHeight="30.0" prefWidth="246.0" text="Tenants List">
+         <font>
+            <Font name="Segoe UI Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

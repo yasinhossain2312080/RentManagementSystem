@@ -76,4 +76,15 @@ public class DashboardViewController
         nextStage.setScene(scene);
         nextStage.show();
     }
+
+    @javafx.fxml.FXML
+    public void tenantsListButtonOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tenant-list-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage nextStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        nextStage.setTitle("Tenants List!");
+        nextStage.setScene(scene);
+        nextStage.show();
+
+    }
 }

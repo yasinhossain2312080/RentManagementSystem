@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: linear-gradient(to bottom right, #2C7A7B, #16353D);" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.rentmanagementsystem.TenantListViewController">
+   <children>
+      <Label layoutX="466.0" layoutY="46.0" style="-fx-text-fill: #F5F5F5;" text="Rent Management System">
+         <font>
+            <Font name="Segoe UI Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="588.0" layoutY="100.0" style="-fx-text-fill: #F5F5F5;" text="Tenant List">
+         <font>
+            <Font name="Segoe UI Bold" size="20.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tenantsListTableView" layoutX="240.0" layoutY="159.0" prefHeight="448.0" prefWidth="799.0">
+        <columns>
+          <TableColumn fx:id="NameTC" prefWidth="403.99993896484375" text="NAME" />
+          <TableColumn fx:id="idTC" prefWidth="394.3999938964844" text="ID" />
+        </columns>
+      </TableView>
+      <Button layoutX="399.0" layoutY="657.0" mnemonicParsing="false" onAction="#editButtonOnAction" prefHeight="26.0" prefWidth="134.0" text="EDIT" />
+      <Button layoutX="777.0" layoutY="657.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="26.0" prefWidth="134.0" text="BACK" />
+   </children>
+</AnchorPane>
