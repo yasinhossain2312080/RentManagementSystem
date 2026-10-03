@@ -7,7 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 
 public class SettingsViewController
 {
@@ -28,6 +30,25 @@ public class SettingsViewController
 
     @javafx.fxml.FXML
     public void initialize() {
+        try{
+            FileInputStream fis = new FileInputStream("PropertyInformation.bin");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            PropertyInformation property = (PropertyInformation) ois.readObject();
+
+            ownerNameTF.setText(property.getOwnerName());
+            propertyNameTF.setText(property.getPropertyName());
+            propertyAddressTF.setText(property.getPropertyAddress());
+            contactNumberTF.setText(property.getContactNumber());
+            totalFloorsTF.setText(String.valueOf(property.getTotalFloor()));
+            totalGarmentsTF.setText(String.valueOf(property.getTotalGarment()));
+            totalShopTF.setText(String.valueOf(property.getTotalShop()));
+            ois.close();
+            fis.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @javafx.fxml.FXML

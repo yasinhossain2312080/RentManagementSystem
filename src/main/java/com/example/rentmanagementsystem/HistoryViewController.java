@@ -7,45 +7,94 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.function.BinaryOperator;
 
 public class HistoryViewController
 {
     @javafx.fxml.FXML
-    private TableView paymentsHistoryTableView;
+    private TableView<RentPayments> paymentsHistoryTableView;
     @javafx.fxml.FXML
-    private TableColumn rentTC;
+    private TableColumn<RentPayments, Double> rentTC;
     @javafx.fxml.FXML
-    private TableColumn nameTC;
+    private TableColumn<RentPayments , String> nameTC;
     @javafx.fxml.FXML
     private TextField tenantsNameTF;
     @javafx.fxml.FXML
-    private TableColumn statusTC;
+    private TableColumn<RentPayments,String> statusTC;
     @javafx.fxml.FXML
-    private TableColumn monthTC;
+    private TableColumn<RentPayments,String> monthTC;
     @javafx.fxml.FXML
-    private TableColumn idTC;
+    private TableColumn<RentPayments,String> idTC;
     @javafx.fxml.FXML
-    private TableColumn currentDueTC;
+    private TableColumn<RentPayments,Double> currentDueTC;
     @javafx.fxml.FXML
     private TextField idTF;
     @javafx.fxml.FXML
-    private TableColumn totalTC;
+    private TableColumn<RentPayments,Double> totalTC;
+    @javafx.fxml.FXML
+    private TableColumn<RentPayments,Double> previousDueTC;
 
     @javafx.fxml.FXML
     public void initialize() {
+        nameTC.setCellValueFactory(new PropertyValueFactory<RentPayments,String>("tenantName"));
+        idTC.setCellValueFactory(new PropertyValueFactory<RentPayments,String>("TenantId"));
+        monthTC.setCellValueFactory(new PropertyValueFactory<RentPayments,String>("month"));
+        rentTC.setCellValueFactory(new PropertyValueFactory<RentPayments,Double>("monthlyRent"));
+        totalTC.setCellValueFactory(new PropertyValueFactory<RentPayments,Double>("TotalAmount"));
+        currentDueTC.setCellValueFactory(new PropertyValueFactory<RentPayments,Double>("CurrentDue"));
+        previousDueTC.setCellValueFactory(new PropertyValueFactory<RentPayments,Double>("PreviousDue"));
+        statusTC.setCellValueFactory(new PropertyValueFactory<RentPayments,String>("PaymentStatus"));
+    }
+
+    @javafx.fxml.FXML
+    public void searchButtonOnAction(ActionEvent actionEvent) {
+        String name= tenantsNameTF.getText().trim();
+        String id = idTF.getText().trim();
+        if(name.isEmpty()  && id.isEmpty()){
+            Methods.Alert("Please enter NAME or ID.");
+            return;
+        }
+        paymentsHistoryTableView.getItems().clear();
+
+        ArrayList<Object>objects = BinaryFileManager.ReadObjects("RentPayments.bin");
+        boolean found = false;
+        for(Object object :objects){
+            RentPayments payment = (RentPayments) object;
+
+            boolean match;
+            if(!name.isEmpty() && !id.isEmpty()){
+                match = payment.getTenantName().equalsIgnoreCase(name) &&
+                        payment.getTenantId().equalsIgnoreCase(id);
+            }else if (!name.isEmpty()){
+                match = payment.getTenantName().equalsIgnoreCase(name);
+
+            }else{
+                match = payment.getTenantId().equalsIgnoreCase(id);
+            }
+            if(match){
+                paymentsHistoryTableView.getItems().add(payment);
+                found = true;
+            }
+        }
+
+        if (!found){
+            Methods.Alert("PAYMENT HISTORY NOT FOUND!!");
+        }
+
     }
 
     @javafx.fxml.FXML
     public void clearButtonOnAction(ActionEvent actionEvent) {
+        tenantsNameTF.clear();
+        idTF.clear();
+        paymentsHistoryTableView.getItems().clear();
     }
 
-
-    @javafx.fxml.FXML
-    public void searchButtonOnAction(ActionEvent actionEvent) {
-    }
 
     @javafx.fxml.FXML
     public void backButtonOnAction(ActionEvent actionEvent) throws IOException {

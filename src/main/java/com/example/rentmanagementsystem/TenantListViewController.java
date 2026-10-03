@@ -6,9 +6,11 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class TenantListViewController
 {
@@ -19,14 +21,20 @@ public class TenantListViewController
     @javafx.fxml.FXML
     private TableColumn<Tenants,String> idTC;
 
+    private TableView<Tenants>tenantsTableView;
+
     @javafx.fxml.FXML
     public void initialize() {
+        NameTC.setCellValueFactory(new PropertyValueFactory<>("name"));
+        idTC.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        ArrayList<Object> objects = BinaryFileManager.ReadObjects("Tenants.bin");
+        for(Object object : objects){
+            Tenants tenant = (Tenants) object;
+            tenantsListTableView.getItems().add(tenant);
+        }
     }
 
-    @javafx.fxml.FXML
-    public void editButtonOnAction(ActionEvent actionEvent) {
-
-    }
 
     @javafx.fxml.FXML
     public void backButtonOnAction(ActionEvent actionEvent) throws IOException {

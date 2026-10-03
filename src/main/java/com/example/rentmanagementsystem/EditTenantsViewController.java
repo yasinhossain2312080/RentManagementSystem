@@ -2,6 +2,7 @@ package com.example.rentmanagementsystem;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.css.Match;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -55,8 +56,17 @@ public class EditTenantsViewController
         boolean found = false;
         for(Object object :objects){
             Tenants tenant = (Tenants)object;
-            if (tenant.getName().equals(searchName)||
-            tenant.getId().equals(searchId)){
+
+            boolean match;
+            if(!searchName.isEmpty() && ! searchId.isEmpty()){
+                match = tenant.getName().equalsIgnoreCase(searchName) &&
+                        tenant.getId().equalsIgnoreCase(searchId);
+            }else if(!searchName.isEmpty()){
+                match = tenant.getName().equalsIgnoreCase(searchName);
+            }else {
+                match = tenant.getId().equalsIgnoreCase(searchId);
+            }
+            if(match){
 
                 this.selectedTenant = tenant;
 
@@ -72,8 +82,19 @@ public class EditTenantsViewController
                 break;
             }
         }
+
         if(!found){
             Methods.Alert("TENANT NOT FOUND!!");
+
+        nameTF.clear();
+        idTF.clear();
+        nameLabel.setText("");
+        idLabel.setText("");
+        advanceLabel.setText("");
+        phoneNumberLabel.setText("");
+        locationAreaLabel.setText("");
+        monthlyRentLabel.setText("");
+        flatRoomShopLabel.setText("");
         }
     }
 

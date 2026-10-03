@@ -56,8 +56,17 @@ public class DeleteTenantsViewController
         for(Object object : objects){
             Tenants tenant = (Tenants) object;
 
-            if(!name.isEmpty() && tenant.getName().equalsIgnoreCase(name)||
-                    (!id.isEmpty() && tenant.getId().equalsIgnoreCase(id))){
+            boolean match;
+            if(!name.isEmpty() && !id.isEmpty()){
+                match = tenant.getName().equalsIgnoreCase(name) &&
+                        tenant.getId().equalsIgnoreCase(id);
+            }else if(!name.isEmpty()){
+                match = tenant.getName().equalsIgnoreCase(name);
+
+            }else{
+                match = tenant.getId().equalsIgnoreCase(id);
+            }if(match){
+
                 selectedTenant = tenant;
                 nameLabel.setText(tenant.getName());
                 idLabel.setText(tenant.getId());
@@ -73,6 +82,16 @@ public class DeleteTenantsViewController
         }
         if(!found){
             Methods.Alert("TENANT NOT FOUND!!");
+
+            nameTF.clear();
+            idTF.clear();
+            nameLabel.setText("");
+            idLabel.setText("");
+            advanceLabel.setText("");
+            phoneNumberLabel.setText("");
+            locationAreaLabel.setText("");
+            monthlyRentLabel.setText("");
+            flatRoomShopLabel.setText("");
         }
     }
 

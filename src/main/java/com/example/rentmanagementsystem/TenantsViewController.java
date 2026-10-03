@@ -24,7 +24,7 @@ public class TenantsViewController
     @javafx.fxml.FXML
     private TableColumn<Tenants, String> flatRoomShopTC;
     @javafx.fxml.FXML
-    private TableColumn<Tenants , Integer> phoneNumberTC;
+    private TableColumn<Tenants , String> phoneNumberTC;
     @javafx.fxml.FXML
     private TableColumn<Tenants , String> idTC;
     @javafx.fxml.FXML
@@ -42,7 +42,7 @@ public class TenantsViewController
         idTC.setCellValueFactory(new PropertyValueFactory<Tenants , String>("id"));
         nameTC.setCellValueFactory(new PropertyValueFactory<Tenants , String>("name"));
         flatRoomShopTC.setCellValueFactory(new PropertyValueFactory<Tenants , String>("flat"));
-        phoneNumberTC.setCellValueFactory(new PropertyValueFactory<Tenants , Integer>("phoneNumber"));
+        phoneNumberTC.setCellValueFactory(new PropertyValueFactory<Tenants , String>("phoneNumber"));
         locationAreaTC.setCellValueFactory(new PropertyValueFactory<Tenants , String>("location"));
         monthlyRentTC.setCellValueFactory(new PropertyValueFactory<Tenants , Double>("monthlyRent"));
         advancedTC.setCellValueFactory(new PropertyValueFactory<Tenants , Double>("advance"));
@@ -54,8 +54,9 @@ public class TenantsViewController
         tenantsInformationTableView.getItems().clear();
 
         String searchName = searchTenantsTF.getText().trim();
+        String searchId = searchTenantsTF.getText().trim();
 
-        if (searchName.isEmpty()){
+        if (searchName.isEmpty() && searchId.isEmpty()){
             tenantsInformationTableView.getItems();
             return;
         }
@@ -69,12 +70,17 @@ public class TenantsViewController
 
             Tenants tenant = (Tenants) object;
 
-            if (tenant.getName().equalsIgnoreCase(searchName)) {
+            if (tenant.getName().equalsIgnoreCase(searchName) ||
+            tenant.getId().equalsIgnoreCase(searchId)) {
                 searchList.add(tenant);
             }
         }
-        tenantsInformationTableView.setItems(searchList);
+        if(searchList.isEmpty()){
+            Methods.Alert("TENANT NOT FOUND!!");
+            return;
+        }
 
+        tenantsInformationTableView.setItems(searchList);
     }
 
     @javafx.fxml.FXML

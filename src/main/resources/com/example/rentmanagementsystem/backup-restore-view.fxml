@@ -26,31 +26,31 @@
                   <Font name="Segoe UI Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="googleAccountTextField" layoutX="28.0" layoutY="64.0" prefHeight="25.0" prefWidth="294.0" />
+            <TextField fx:id="googleAccountTextField" editable="false" layoutX="28.0" layoutY="64.0" prefHeight="25.0" prefWidth="294.0" />
             <Button layoutX="86.0" layoutY="110.0" mnemonicParsing="false" onAction="#connectGoogleAccountButtonOnAction" prefHeight="25.0" prefWidth="179.0" text="Connect google Acccount" />
             <Label layoutX="384.0" layoutY="68.0" prefHeight="18.0" prefWidth="117.0" style="-fx-text-fill: #F5F5F5;">
                <font>
                   <Font name="Segoe UI Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="28.0" layoutY="182.0" style="-fx-text-fill: #F5F5F5;" text="Backup Status">
+            <Label layoutX="28.0" layoutY="182.0" prefHeight="18.0" prefWidth="169.0" style="-fx-text-fill: #F5F5F5;" text="Bacup &amp; Restore Status :">
                <font>
                   <Font name="Segoe UI Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="34.0" layoutY="279.0" style="-fx-text-fill: #F5F5F5;" text="Last Backup">
+            <Label layoutX="34.0" layoutY="279.0" prefHeight="18.0" prefWidth="97.0" style="-fx-text-fill: #F5F5F5;" text="Last Backup :">
                <font>
                   <Font name="Segoe UI Bold" size="14.0" />
                </font>
             </Label>
             <Button layoutX="187.0" layoutY="406.0" mnemonicParsing="false" onAction="#backupNowButtonOnAction" prefHeight="25.0" prefWidth="179.0" text="Backup Now" />
             <Button layoutX="187.0" layoutY="470.0" mnemonicParsing="false" onAction="#restoreButtonOnAction" prefHeight="25.0" prefWidth="179.0" text="Restore Now" />
-            <Label fx:id="backupStatusLabel" layoutX="27.0" layoutY="223.0" prefHeight="18.0" prefWidth="160.0" style="-fx-text-fill: #F5F5F5;">
+            <Label fx:id="backupStatusLabel" layoutX="27.0" layoutY="223.0" prefHeight="18.0" prefWidth="277.0" style="-fx-text-fill: #F5F5F5;" textFill="#dcd9d9">
                <font>
                   <Font name="Segoe UI Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="lastBackupLabel" layoutX="32.0" layoutY="326.0" prefHeight="18.0" prefWidth="179.0" style="-fx-text-fill: #F5F5F5;">
+            <Label fx:id="lastBackupLabel" layoutX="32.0" layoutY="326.0" prefHeight="18.0" prefWidth="277.0" style="-fx-text-fill: #F5F5F5;" textFill="#d41430">
                <font>
                   <Font name="Segoe UI Bold" size="14.0" />
                </font>

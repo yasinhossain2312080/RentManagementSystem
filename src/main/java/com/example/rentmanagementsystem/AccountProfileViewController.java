@@ -7,7 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class AccountProfileViewController
 {
@@ -32,6 +34,35 @@ public class AccountProfileViewController
 
     @javafx.fxml.FXML
     public void updateProfileButtonOnAction(ActionEvent actionEvent) {
+
+        String OwnerName = ownerNameTF.getText();
+        String PropertyName = propertyNameTF.getText();
+        String PropertyAddress = propertyAddressTF.getText();
+        String ContactNumber = contactNumberTF.getText();
+        Integer TotalFloor = Integer.parseInt(totalFloorsTF.getText());
+        Integer TotalGarments = Integer.parseInt(totalGarmentsTF.getText());
+        Integer TotalShop = Integer.parseInt(totalShopTF.getText());
+
+        PropertyInformation property = new PropertyInformation(
+                OwnerName,PropertyName,PropertyAddress,ContactNumber,TotalFloor,TotalGarments,TotalShop
+        );
+
+        try{
+            FileOutputStream fos = new FileOutputStream("PropertyInformation.bin");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(property);
+
+            oos.close();
+            fos.close();
+
+            System.out.println("Property Information saved successfully..");
+
+            Methods.Alert("Property Information Successfully Saved.");
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     @javafx.fxml.FXML

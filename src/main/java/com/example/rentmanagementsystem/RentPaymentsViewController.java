@@ -8,8 +8,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import javax.swing.plaf.metal.MetalTheme;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -67,12 +65,19 @@ public class RentPaymentsViewController
         boolean found = false;
         for(Object object : objects){
             Tenants tenant = (Tenants) object;
-            if(!name.isEmpty() && (tenant.getName().equalsIgnoreCase(name))||
-                    (!id.isEmpty()) &&(tenant.getId().equalsIgnoreCase(id))){
+
+            boolean match;
+            if(!name.isEmpty() && !id.isEmpty()){
+                match = tenant.getName().equalsIgnoreCase(name) &&
+                        tenant.getId().equalsIgnoreCase(id);
+            }else if (!name.isEmpty()){
+                match = tenant.getName().equalsIgnoreCase(name);
+            }else {
+                match = tenant.getId().equalsIgnoreCase(id);
+            }
+            if(match){
                 selectedTenant = tenant;
-
                 monthlyRentTF.setText(String.valueOf(tenant.getMonthlyRent()));
-
                 double due = getPreviousDue(tenant.getId());
                 previousDue.setText(String.valueOf(due));
                 found= true;
@@ -81,6 +86,18 @@ public class RentPaymentsViewController
         }
         if(!found){
             Methods.Alert("TENANT NOT FOUND!!");
+
+            tenantsNameTF.clear();
+            TenantsID.clear();
+            monthlyRentTF.clear();
+            previousDue.clear();
+            monthTF.clear();
+            gasBillTextField.clear();
+            waterBillTextField.clear();
+            electricityBillTextField.clear();
+            currentDueTextField.clear();
+            paymentsStatusComboBox.setValue(null);
+            paymentsMethodComboBox.setValue(null);
         }
     }
 

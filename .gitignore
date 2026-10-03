@@ -37,3 +37,20 @@ build/
 
 ### Mac OS ###
 .DS_Store
+# Google OAuth
+src/main/resources/credentials.json
+tokens/
+
+# Local backup files
+Backup/
+Restore/
+
+# Local data files
+googleAccount.txt
+lastBackup.txt
+PropertyInformation.bin
+RentPayments.bin
+Tenants.bin
+
+# IntelliJ local files
+.idea/dictionaries/
