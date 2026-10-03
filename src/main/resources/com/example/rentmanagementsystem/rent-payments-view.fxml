@@ -30,22 +30,22 @@
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="139.0" layoutY="230.0" style="-fx-text-fill: #F5F5F5;" text="Month">
+      <Label layoutX="139.0" layoutY="296.0" style="-fx-text-fill: #F5F5F5;" text="Month">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="135.0" layoutY="304.0" style="-fx-text-fill: #F5F5F5;" text="payments date">
+      <Label layoutX="139.0" layoutY="359.0" style="-fx-text-fill: #F5F5F5;" text="payments date">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="132.0" layoutY="377.0" style="-fx-text-fill: #F5F5F5;" text="payments method">
+      <Label layoutX="132.0" layoutY="414.0" style="-fx-text-fill: #F5F5F5;" text="payments method">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="131.0" layoutY="446.0" style="-fx-text-fill: #F5F5F5;" text="payments status">
+      <Label layoutX="132.0" layoutY="472.0" style="-fx-text-fill: #F5F5F5;" text="payments status">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
@@ -55,22 +55,22 @@
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="806.0" layoutY="286.0" style="-fx-text-fill: #F5F5F5;" text="gas bill">
+      <Label layoutX="806.0" layoutY="267.0" style="-fx-text-fill: #F5F5F5;" text="gas bill">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="806.0" layoutY="359.0" style="-fx-text-fill: #F5F5F5;" text="water bill">
+      <Label layoutX="806.0" layoutY="332.0" style="-fx-text-fill: #F5F5F5;" text="water bill">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="806.0" layoutY="428.0" style="-fx-text-fill: #F5F5F5;" text="previous due">
+      <Label layoutX="806.0" layoutY="385.0" style="-fx-text-fill: #F5F5F5;" text="previous due">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="806.0" layoutY="495.0" style="-fx-text-fill: #F5F5F5;" text="Total">
+      <Label layoutX="806.0" layoutY="441.0" style="-fx-text-fill: #F5F5F5;" text="Total">
          <font>
             <Font name="Segoe UI Bold" size="15.0" />
          </font>
@@ -81,22 +81,44 @@
          </font>
       </Label>
       <TextField fx:id="tenantsNameTF" layoutX="273.0" layoutY="160.0" prefHeight="26.0" prefWidth="222.0" />
-      <TextField fx:id="monthTF" layoutX="273.0" layoutY="226.0" prefHeight="26.0" prefWidth="222.0" />
-      <DatePicker fx:id="paymentsDateDatePicker" layoutX="273.0" layoutY="300.0" prefHeight="26.0" prefWidth="222.0" />
-      <ComboBox fx:id="paymentsMethodComboBox" layoutX="273.0" layoutY="374.0" prefHeight="26.0" prefWidth="222.0" />
-      <ComboBox fx:id="paymentsStatusComboBox" layoutX="273.0" layoutY="442.0" prefHeight="26.0" prefWidth="222.0" />
-      <TextField fx:id="monthlyRentTF" layoutX="923.0" layoutY="141.0" prefHeight="26.0" prefWidth="222.0" />
+      <TextField fx:id="monthTF" layoutX="273.0" layoutY="292.0" prefHeight="26.0" prefWidth="222.0" />
+      <DatePicker fx:id="paymentsDateDatePicker" layoutX="277.0" layoutY="355.0" prefHeight="26.0" prefWidth="222.0" />
+      <ComboBox fx:id="paymentsMethodComboBox" layoutX="273.0" layoutY="411.0" prefHeight="26.0" prefWidth="222.0" />
+      <ComboBox fx:id="paymentsStatusComboBox" layoutX="274.0" layoutY="468.0" prefHeight="26.0" prefWidth="222.0" />
+      <TextField fx:id="monthlyRentTF" editable="false" layoutX="923.0" layoutY="141.0" prefHeight="26.0" prefWidth="222.0" />
       <TextField fx:id="electricityBillTextField" layoutX="923.0" layoutY="208.0" prefHeight="26.0" prefWidth="222.0" />
-      <TextField fx:id="gasBillTextField" layoutX="923.0" layoutY="288.0" prefHeight="26.0" prefWidth="222.0" />
-      <TextField fx:id="waterBillTextField" layoutX="923.0" layoutY="355.0" prefHeight="26.0" prefWidth="222.0" />
-      <TextField fx:id="previousDue" layoutX="923.0" layoutY="424.0" prefHeight="26.0" prefWidth="222.0" />
-      <TextField fx:id="totalTextFiled" editable="false" layoutX="923.0" layoutY="491.0" prefHeight="26.0" prefWidth="222.0" />
-      <TextField fx:id="currentDueTextField" layoutX="923.0" layoutY="553.0" prefHeight="26.0" prefWidth="222.0" />
+      <TextField fx:id="gasBillTextField" layoutX="923.0" layoutY="269.0" prefHeight="26.0" prefWidth="222.0" />
+      <TextField fx:id="waterBillTextField" layoutX="923.0" layoutY="328.0" prefHeight="26.0" prefWidth="222.0" />
+      <TextField fx:id="previousDue" editable="false" layoutX="923.0" layoutY="381.0" prefHeight="26.0" prefWidth="222.0" />
+      <TextField fx:id="totalTextFiled" editable="false" layoutX="923.0" layoutY="437.0" prefHeight="26.0" prefWidth="222.0" />
+      <TextField fx:id="currentDueTextField" editable="false" layoutX="923.0" layoutY="553.0" prefHeight="26.0" prefWidth="222.0" />
       <Button layoutX="566.0" layoutY="621.0" mnemonicParsing="false" onAction="#savePaymentsButtonOnAction" prefHeight="46.0" prefWidth="146.0" text="Save Payments">
          <font>
             <Font name="Segoe UI Bold Italic" size="16.0" />
          </font>
       </Button>
       <Button layoutX="1155.0" layoutY="34.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="34.0" prefWidth="82.0" text="Back" />
+      <Button layoutX="542.0" layoutY="182.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="46.0" prefWidth="115.0" text="Search">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="139.0" layoutY="224.0" style="-fx-text-fill: #F5F5F5;" text="Tenants Id">
+         <font>
+            <Font name="Segoe UI Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="TenantsID" layoutX="273.0" layoutY="221.0" prefHeight="26.0" prefWidth="222.0" />
+      <Button layoutX="1155.0" layoutY="552.0" mnemonicParsing="false" onAction="#calculateButtonOnAction" prefHeight="26.0" prefWidth="99.0" text="Calculate">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="806.0" layoutY="495.0" style="-fx-text-fill: #F5F5F5;" text="Paid Amount">
+         <font>
+            <Font name="Segoe UI Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="paidAmountTextFiled" layoutX="923.0" layoutY="491.0" prefHeight="26.0" prefWidth="222.0" />
    </children>
 </AnchorPane>
