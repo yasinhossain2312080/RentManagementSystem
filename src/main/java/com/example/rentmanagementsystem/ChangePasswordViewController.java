@@ -8,6 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ChangePasswordViewController
 {
@@ -34,5 +35,82 @@ public class ChangePasswordViewController
 
     @javafx.fxml.FXML
     public void changePasswordButtonOnAction(ActionEvent actionEvent) {
+        String currentPassword = currentPasswordPF.getText();
+        String newPassword = newPasswordPF.getText();
+        String confirmPassword = confirmPasswordPF.getText();
+
+        if (currentPassword.isEmpty()
+                || newPassword.isEmpty()
+                || confirmPassword.isEmpty()) {
+
+            Methods.Alert("Please fill in all password fields.");
+            return;
+        }
+
+        if (User.currentUser == null) {
+
+            Methods.Alert("No logged-in user found.");
+            return;
+        }
+
+        if (!User.currentUser.getPassword().equals(currentPassword)) {
+
+            Methods.Alert("Current password is incorrect.");
+            return;
+        }
+
+        if (!newPassword.equals(confirmPassword)) {
+
+            Methods.Alert("New password and confirm password do not match.");
+            return;
+        }
+
+        if (currentPassword.equals(newPassword)) {
+
+            Methods.Alert("New password must be different from current password.");
+            return;
+        }
+
+        ArrayList<Object> objects =
+                BinaryFileManager.ReadObjects("Users.bin");
+
+        boolean passwordChanged = false;
+
+        for (Object object : objects) {
+
+            if (object instanceof User) {
+
+                User user = (User) object;
+
+                if (user.getUserID().equals(User.currentUser.getUserID())) {
+
+                    user.setPassword(newPassword);
+
+                    passwordChanged = true;
+
+                    break;
+                }
+            }
+        }
+
+        if (passwordChanged) {
+
+            BinaryFileManager.writeAllObject(
+                    "Users.bin",
+                    objects
+            );
+
+            User.currentUser.setPassword(newPassword);
+
+            Methods.Alert("Password changed successfully.");
+
+            currentPasswordPF.clear();
+            newPasswordPF.clear();
+            confirmPasswordPF.clear();
+
+        } else {
+
+            Methods.Alert("Unable to change password.");
+        }
     }
 }

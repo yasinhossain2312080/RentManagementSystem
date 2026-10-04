@@ -54,3 +54,6 @@ Tenants.bin
 
 # IntelliJ local files
 .idea/dictionaries/
+
+emailConfig.properties
+Users.bin

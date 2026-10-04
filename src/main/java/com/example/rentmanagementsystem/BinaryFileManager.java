@@ -1,5 +1,7 @@
 package com.example.rentmanagementsystem;
 
+import com.google.api.client.googleapis.mtls.MtlsProvider;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -80,4 +82,68 @@ public class BinaryFileManager {
         }
     }
 
+    public static boolean userIDExists(String fileName , String userID){
+        ArrayList<Object>objects = ReadObjects(fileName);
+        for(Object object : objects){
+            if(object instanceof User){
+                User user = (User) object;
+                if(user.getUserID().equals(userID)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean userEmailOrPhoneNumber(String fileName , String email , String phoneNumber){
+        ArrayList<Object>objects = ReadObjects(fileName);
+        for(Object object : objects){
+            if (object instanceof User){
+                User user  = (User) object;
+                if(user.getEmail().equals(email) ||
+                user.getPhoneNumber().equals(phoneNumber)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static User searchUserByEmailAndPhone(
+            String fileName,
+            String email,
+            String phoneNumber) {
+
+        ArrayList<Object> objects = ReadObjects(fileName);
+
+        for (Object object : objects) {
+
+            if (object instanceof User) {
+
+                User user = (User) object;
+
+                if (user.getEmail().trim().equalsIgnoreCase(email.trim())
+                        && user.getPhoneNumber().trim().equals(phoneNumber.trim())) {
+
+                    return user;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public static User searchUserIDAndPassword(String fileName , String id , String password){
+        ArrayList<Object>objects = ReadObjects(fileName);
+        for(Object object :objects){
+            if(object instanceof  User){
+                User user = (User) object;
+                if(user.getUserID().equals(id) &&
+                user.getPassword().equals(password)){
+                    return user;
+                }
+            }
+        }
+        return null;
+    }
 }

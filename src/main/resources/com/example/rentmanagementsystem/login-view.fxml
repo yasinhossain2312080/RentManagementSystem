@@ -11,7 +11,7 @@
    <children>
       <Pane layoutX="225.0" layoutY="140.0" prefHeight="402.0" prefWidth="550.0" style="-fx-background-color: #0E2227; -fx-background-radius: 8;">
          <children>
-            <Label alignment="TOP_CENTER" layoutX="69.0" layoutY="43.0" prefHeight="18.0" prefWidth="72.0" style="-fx-background-color: #FFFFFF;" text="USER NAME" />
+            <Label alignment="TOP_CENTER" layoutX="69.0" layoutY="43.0" prefHeight="18.0" prefWidth="72.0" style="-fx-background-color: #FFFFFF;" text="USER ID" />
             <TextField fx:id="userNameTextField" layoutX="152.0" layoutY="39.0" prefHeight="26.0" prefWidth="300.0" />
             <Label alignment="TOP_CENTER" layoutX="69.0" layoutY="101.0" prefHeight="18.0" prefWidth="72.0" style="-fx-background-color: #FFFFFF;" text="PASSWORD" />
             <TextField fx:id="passwordTextField" layoutX="152.0" layoutY="97.0" prefHeight="26.0" prefWidth="300.0" />
