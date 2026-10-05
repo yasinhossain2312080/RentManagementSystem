@@ -5,12 +5,9 @@ target/
 .kotlin
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
+.idea/
 *.iml
+*.iws
 *.ipr
 
 ### Eclipse ###
@@ -37,6 +34,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
 # Google OAuth
 src/main/resources/credentials.json
 tokens/
@@ -46,14 +44,14 @@ Backup/
 Restore/
 
 # Local data files
+*.bin
 googleAccount.txt
 lastBackup.txt
-PropertyInformation.bin
-RentPayments.bin
-Tenants.bin
 
-# IntelliJ local files
-.idea/dictionaries/
-
+# Email configuration
 emailConfig.properties
-Users.bin
+
+# Generated application/package files
+app/
+installer/
+package-input/

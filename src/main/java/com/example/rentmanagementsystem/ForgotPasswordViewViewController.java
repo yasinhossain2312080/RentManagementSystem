@@ -26,27 +26,19 @@ public class ForgotPasswordViewViewController {
 
     @javafx.fxml.FXML
     public void backToLoginPageButtonOnAction(ActionEvent actionEvent) throws IOException {
-
-        FXMLLoader fxmlLoader =
-                new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
-
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-
-        Stage nextStage =
-                (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
+        Stage nextStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         nextStage.setTitle("Login Page!");
         nextStage.setScene(scene);
         nextStage.show();
     }
-
 
     @javafx.fxml.FXML
     public void sendVerificationCodeButtonOnAction(ActionEvent actionEvent) throws IOException {
 
         String phoneNumber = enterPhoneNumberTextField.getText();
         String email = enterEmailTextField.getText();
-
 
         // Check empty fields
         if (phoneNumber.isEmpty() || email.isEmpty()) {
@@ -56,22 +48,14 @@ public class ForgotPasswordViewViewController {
             alert.setHeaderText(null);
             alert.setContentText("Please enter Email and Phone Number.");
             alert.showAndWait();
-
             return;
         }
 
-
         // Search user by email and phone
-        User user = BinaryFileManager.searchUserByEmailAndPhone(
-                "Users.bin",
-                email,
-                phoneNumber
-        );
-
+        User user = BinaryFileManager.searchUserByEmailAndPhone("Users.bin", email, phoneNumber);
 
         // User not found
         if (user == null) {
-
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Verification Failed");
             alert.setHeaderText(null);
@@ -89,16 +73,9 @@ public class ForgotPasswordViewViewController {
 
 
         // Open Set Password page
-        FXMLLoader fxmlLoader =
-                new FXMLLoader(
-                        HelloApplication.class.getResource("set-password-view.fxml")
-                );
-
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("set-password-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-
-        Stage nextStage =
-                (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
+        Stage nextStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         nextStage.setTitle("Set Password!");
         nextStage.setScene(scene);
         nextStage.show();
@@ -127,13 +104,7 @@ public class ForgotPasswordViewViewController {
         );
 
         if (user == null) {
-
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("User Not Found");
-            alert.setHeaderText(null);
-            alert.setContentText("Email or Phone Number is incorrect.");
-            alert.showAndWait();
-
+            Methods.Alert("Email or Phone Number is incorrect.");
             return;
         }
 

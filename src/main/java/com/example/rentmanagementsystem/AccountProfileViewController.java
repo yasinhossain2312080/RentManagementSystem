@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -39,30 +40,73 @@ public class AccountProfileViewController
         String PropertyName = propertyNameTF.getText();
         String PropertyAddress = propertyAddressTF.getText();
         String ContactNumber = contactNumberTF.getText();
-        Integer TotalFloor = Integer.parseInt(totalFloorsTF.getText());
-        Integer TotalGarments = Integer.parseInt(totalGarmentsTF.getText());
-        Integer TotalShop = Integer.parseInt(totalShopTF.getText());
+        String TotalFloorText = totalFloorsTF.getText();
+        String TotalGarmentsText = totalGarmentsTF.getText();
+        String TotalShopText = totalShopTF.getText();
 
-        PropertyInformation property = new PropertyInformation(
-                OwnerName,PropertyName,PropertyAddress,ContactNumber,TotalFloor,TotalGarments,TotalShop
-        );
+        // Check any field is empty
+        if (OwnerName.isEmpty() ||
+                PropertyName.isEmpty() ||
+                PropertyAddress.isEmpty() ||
+                ContactNumber.isEmpty() ||
+                TotalFloorText.isEmpty() ||
+                TotalGarmentsText.isEmpty() ||
+                TotalShopText.isEmpty()) {
 
-        try{
-            FileOutputStream fos = new FileOutputStream("PropertyInformation.bin");
+            Methods.Alert("Please fill up all the fields.");
+
+            return;
+        }
+
+        Integer TotalFloor = Integer.parseInt(TotalFloorText);
+        Integer TotalGarments = Integer.parseInt(TotalGarmentsText);
+        Integer TotalShop = Integer.parseInt(TotalShopText);
+
+        PropertyInformation property =
+                new PropertyInformation(
+                        OwnerName,
+                        PropertyName,
+                        PropertyAddress,
+                        ContactNumber,
+                        TotalFloor,
+                        TotalGarments,
+                        TotalShop
+                );
+
+
+        try {
+
+            String appData = System.getenv("APPDATA");
+            String userID = User.currentUser.getUserID();
+
+            File userFolder = new File(
+                    appData
+                            + File.separator
+                            + "RentManagementSystem"
+                            + File.separator
+                            + "UserData"
+                            + File.separator
+                            + userID
+            );
+
+            if (!userFolder.exists()) {
+                userFolder.mkdirs();
+            }
+
+            File propertyFile = new File(userFolder, "PropertyInformation_" + userID + ".bin");
+            FileOutputStream fos = new FileOutputStream(propertyFile);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(property);
-
             oos.close();
             fos.close();
 
             System.out.println("Property Information saved successfully..");
-
             Methods.Alert("Property Information Successfully Saved.");
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+            Methods.Alert("Property Information could not be saved.");
         }
-
     }
 
     @javafx.fxml.FXML

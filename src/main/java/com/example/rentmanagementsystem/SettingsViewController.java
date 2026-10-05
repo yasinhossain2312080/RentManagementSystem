@@ -30,10 +30,11 @@ public class SettingsViewController
 
     @javafx.fxml.FXML
     public void initialize() {
-        try{
-            FileInputStream fis = new FileInputStream("PropertyInformation.bin");
-            ObjectInputStream ois = new ObjectInputStream(fis);
+        try {
 
+            String userID = User.currentUser.getUserID();
+            FileInputStream fis = new FileInputStream("PropertyInformation_" + userID + ".bin");
+            ObjectInputStream ois = new ObjectInputStream(fis);
             PropertyInformation property = (PropertyInformation) ois.readObject();
 
             ownerNameTF.setText(property.getOwnerName());
@@ -43,10 +44,11 @@ public class SettingsViewController
             totalFloorsTF.setText(String.valueOf(property.getTotalFloor()));
             totalGarmentsTF.setText(String.valueOf(property.getTotalGarment()));
             totalShopTF.setText(String.valueOf(property.getTotalShop()));
+
             ois.close();
             fis.close();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

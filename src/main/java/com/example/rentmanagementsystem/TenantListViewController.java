@@ -16,22 +16,43 @@ public class TenantListViewController
 {
     @javafx.fxml.FXML
     private TableColumn<Tenants,String> NameTC;
+
     @javafx.fxml.FXML
     private TableView<Tenants> tenantsListTableView;
+
     @javafx.fxml.FXML
     private TableColumn<Tenants,String> idTC;
 
-    private TableView<Tenants>tenantsTableView;
 
     @javafx.fxml.FXML
     public void initialize() {
-        NameTC.setCellValueFactory(new PropertyValueFactory<>("name"));
-        idTC.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        ArrayList<Object> objects = BinaryFileManager.ReadObjects("Tenants.bin");
+        NameTC.setCellValueFactory(
+                new PropertyValueFactory<>("name")
+        );
+
+        idTC.setCellValueFactory(
+                new PropertyValueFactory<>("id")
+        );
+
+
+        ArrayList<Object> objects =
+                BinaryFileManager.ReadObjects("Tenants.bin");
+
+
+        String currentUserID =
+                User.currentUser.getUserID();
+
+
         for(Object object : objects){
+
             Tenants tenant = (Tenants) object;
-            tenantsListTableView.getItems().add(tenant);
+
+
+            if(tenant.getUserID().equals(currentUserID)){
+
+                tenantsListTableView.getItems().add(tenant);
+            }
         }
     }
 
@@ -44,6 +65,5 @@ public class TenantListViewController
         nextStage.setTitle("Dash Board!");
         nextStage.setScene(scene);
         nextStage.show();
-
     }
 }

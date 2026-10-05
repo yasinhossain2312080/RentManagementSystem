@@ -71,8 +71,7 @@ public class ChangePasswordViewController
             return;
         }
 
-        ArrayList<Object> objects =
-                BinaryFileManager.ReadObjects("Users.bin");
+        ArrayList<Object> objects = BinaryFileManager.ReadObjects("Users.bin");
 
         boolean passwordChanged = false;
 
@@ -94,16 +93,9 @@ public class ChangePasswordViewController
         }
 
         if (passwordChanged) {
-
-            BinaryFileManager.writeAllObject(
-                    "Users.bin",
-                    objects
-            );
-
+            BinaryFileManager.writeAllObject("Users.bin", objects);
             User.currentUser.setPassword(newPassword);
-
             Methods.Alert("Password changed successfully.");
-
             currentPasswordPF.clear();
             newPasswordPF.clear();
             confirmPasswordPF.clear();
@@ -111,6 +103,7 @@ public class ChangePasswordViewController
         } else {
 
             Methods.Alert("Unable to change password.");
+            return;
         }
     }
 }

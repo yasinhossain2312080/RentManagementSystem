@@ -10,9 +10,7 @@ import java.util.Properties;
 
 public class EmailService {
     public static void sendOTP(String receiverEmail, String otp) {
-
         Properties config = new Properties();
-
         try {
 
             var inputStream =
@@ -22,7 +20,6 @@ public class EmailService {
                 System.out.println("emailConfig.properties not found.");
                 return;
             }
-
             config.load(inputStream);
 
             inputStream.close();
@@ -43,9 +40,7 @@ public class EmailService {
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
 
-        Session session = Session.getInstance(
-                properties,
-                new Authenticator() {
+        Session session = Session.getInstance(properties, new Authenticator() {
 
                     @Override
                     protected PasswordAuthentication getPasswordAuthentication() {
@@ -61,18 +56,9 @@ public class EmailService {
         try {
 
             Message message = new MimeMessage(session);
-
             message.setFrom(new InternetAddress(senderEmail));
-
-            message.setRecipients(
-                    Message.RecipientType.TO,
-                    InternetAddress.parse(receiverEmail)
-            );
-
-            message.setSubject(
-                    "Rent Management System - Password Reset OTP"
-            );
-
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receiverEmail));
+            message.setSubject("Rent Management System - Password Reset OTP");
             message.setText(
                     "Hello Sir/ Ma'am,\n\n"
                             + "Your password reset OTP is: " + otp + "\n\n"
@@ -81,13 +67,9 @@ public class EmailService {
                             + "Regards,\n"
                             + "Rent Management System"
             );
-
             Transport.send(message);
-
             System.out.println("OTP sent successfully!");
-
         } catch (MessagingException e) {
-
             e.printStackTrace();
         }
     }

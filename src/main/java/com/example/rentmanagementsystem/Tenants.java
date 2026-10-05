@@ -3,11 +3,24 @@ package com.example.rentmanagementsystem;
 import java.io.Serializable;
 
 public class Tenants implements Serializable {
-    private static final long SerialversionUID = 1L ;
-    private String name,id,location,flat,phoneNumber;
-    private Double advance,monthlyRent;
 
-    public Tenants(String name, String id, String location, String flat, String phoneNumber, Double advance, Double monthlyRent) {
+    private static final long SerialversionUID = 1L;
+
+    private String name;
+    private String id;
+    private String location;
+    private String flat;
+    private String phoneNumber;
+    private String userID;
+
+    private Double advance;
+    private Double monthlyRent;
+
+
+    public Tenants(String name, String id, String location, String flat,
+                   String phoneNumber, Double advance, Double monthlyRent,
+                   String userID) {
+
         this.name = name;
         this.id = id;
         this.location = location;
@@ -15,7 +28,9 @@ public class Tenants implements Serializable {
         this.phoneNumber = phoneNumber;
         this.advance = advance;
         this.monthlyRent = monthlyRent;
+        this.userID = userID;
     }
+
 
     public String getName() {
         return name;
@@ -25,6 +40,7 @@ public class Tenants implements Serializable {
         this.name = name;
     }
 
+
     public String getId() {
         return id;
     }
@@ -32,6 +48,7 @@ public class Tenants implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
+
 
     public String getLocation() {
         return location;
@@ -41,6 +58,7 @@ public class Tenants implements Serializable {
         this.location = location;
     }
 
+
     public String getFlat() {
         return flat;
     }
@@ -48,6 +66,7 @@ public class Tenants implements Serializable {
     public void setFlat(String flat) {
         this.flat = flat;
     }
+
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -57,6 +76,7 @@ public class Tenants implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
+
     public Double getAdvance() {
         return advance;
     }
@@ -64,6 +84,7 @@ public class Tenants implements Serializable {
     public void setAdvance(Double advance) {
         this.advance = advance;
     }
+
 
     public Double getMonthlyRent() {
         return monthlyRent;
@@ -73,17 +94,28 @@ public class Tenants implements Serializable {
         this.monthlyRent = monthlyRent;
     }
 
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+
     @Override
     public String toString() {
+
         return "Tenants{" +
                 "name='" + name + '\'' +
                 ", id='" + id + '\'' +
                 ", location='" + location + '\'' +
                 ", flat='" + flat + '\'' +
-                ", phoneNumber=" + phoneNumber +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", advance=" + advance +
                 ", monthlyRent=" + monthlyRent +
+                ", userID='" + userID + '\'' +
                 '}';
     }
-
 }

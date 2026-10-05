@@ -28,11 +28,53 @@ public class GoogleDriveService {
     private static final JsonFactory JSON_FACTORY =
             GsonFactory.getDefaultInstance();
 
-    private static final String TOKENS_DIRECTORY_PATH =
-            "tokens";
-
     private static final List<String> SCOPES =
             Collections.singletonList(DriveScopes.DRIVE_FILE);
+
+
+    private static File getUserFolder() {
+
+        String appData =
+                System.getenv("APPDATA");
+
+        String userID =
+                User.currentUser.getUserID();
+
+        File userFolder =
+                new File(
+                        appData
+                                + File.separator
+                                + "RentManagementSystem"
+                                + File.separator
+                                + "UserData"
+                                + File.separator
+                                + userID
+                );
+
+        if (!userFolder.exists()) {
+
+            userFolder.mkdirs();
+        }
+
+        return userFolder;
+    }
+
+
+    private static File getTokenFolder() {
+
+        File tokenFolder =
+                new File(
+                        getUserFolder(),
+                        "tokens"
+                );
+
+        if (!tokenFolder.exists()) {
+
+            tokenFolder.mkdirs();
+        }
+
+        return tokenFolder;
+    }
 
 
     private static Credential getCredentials(
@@ -41,7 +83,10 @@ public class GoogleDriveService {
 
         InputStream inputStream =
                 GoogleDriveService.class
-                        .getResourceAsStream("/credentials.json");
+                        .getResourceAsStream(
+                                "/credentials.json"
+                        );
+
 
         if (inputStream == null) {
 
@@ -49,6 +94,7 @@ public class GoogleDriveService {
                     "credentials.json not found."
             );
         }
+
 
         GoogleClientSecrets clientSecrets =
                 GoogleClientSecrets.load(
@@ -66,7 +112,7 @@ public class GoogleDriveService {
                 )
                         .setDataStoreFactory(
                                 new FileDataStoreFactory(
-                                        new File(TOKENS_DIRECTORY_PATH)
+                                        getTokenFolder()
                                 )
                         )
                         .setAccessType("offline")
@@ -114,15 +160,21 @@ public class GoogleDriveService {
         Drive driveService =
                 getDriveService();
 
+
         Drive.About.Get request =
                 driveService.about().get();
 
-        request.setFields("user(emailAddress)");
+
+        request.setFields(
+                "user(emailAddress)"
+        );
+
 
         return request.execute()
                 .getUser()
                 .getEmailAddress();
     }
+
 
     public static void uploadBackup(File zipFile)
             throws Exception {
@@ -130,10 +182,15 @@ public class GoogleDriveService {
         Drive driveService =
                 getDriveService();
 
+
         com.google.api.services.drive.model.File fileMetadata =
                 new com.google.api.services.drive.model.File();
 
-        fileMetadata.setName(zipFile.getName());
+
+        fileMetadata.setName(
+                zipFile.getName()
+        );
+
 
         com.google.api.client.http.FileContent mediaContent =
                 new com.google.api.client.http.FileContent(
@@ -141,11 +198,16 @@ public class GoogleDriveService {
                         zipFile
                 );
 
+
         driveService.files()
-                .create(fileMetadata, mediaContent)
+                .create(
+                        fileMetadata,
+                        mediaContent
+                )
                 .setFields("id, name")
                 .execute();
     }
+
 
     public static File downloadLatestBackup()
             throws Exception {
@@ -153,15 +215,25 @@ public class GoogleDriveService {
         Drive driveService =
                 getDriveService();
 
+
         List<com.google.api.services.drive.model.File> files =
                 driveService.files()
                         .list()
-                        .setQ("name contains 'RentManagementBackup_' and trashed = false")
-                        .setOrderBy("createdTime desc")
+                        .setQ(
+                                "name contains " +
+                                        "'RentManagementBackup_' " +
+                                        "and trashed = false"
+                        )
+                        .setOrderBy(
+                                "createdTime desc"
+                        )
                         .setPageSize(1)
-                        .setFields("files(id, name)")
+                        .setFields(
+                                "files(id, name)"
+                        )
                         .execute()
                         .getFiles();
+
 
         if (files.isEmpty()) {
 
@@ -170,16 +242,23 @@ public class GoogleDriveService {
             );
         }
 
+
         com.google.api.services.drive.model.File backupFile =
                 files.get(0);
 
+
         File restoreFolder =
-                new File("Restore");
+                new File(
+                        getUserFolder(),
+                        "Restore"
+                );
+
 
         if (!restoreFolder.exists()) {
 
-            restoreFolder.mkdir();
+            restoreFolder.mkdirs();
         }
+
 
         File downloadedFile =
                 new File(
@@ -187,14 +266,22 @@ public class GoogleDriveService {
                         backupFile.getName()
                 );
 
+
         FileOutputStream outputStream =
-                new FileOutputStream(downloadedFile);
+                new FileOutputStream(
+                        downloadedFile
+                );
+
 
         driveService.files()
                 .get(backupFile.getId())
-                .executeMediaAndDownloadTo(outputStream);
+                .executeMediaAndDownloadTo(
+                        outputStream
+                );
+
 
         outputStream.close();
+
 
         return downloadedFile;
     }

@@ -95,9 +95,7 @@ public class SetPasswordViewController {
         ArrayList<Object> objects =
                 BinaryFileManager.ReadObjects("Users.bin");
 
-
         boolean passwordChanged = false;
-
 
         // Find user and change password
         for (Object object : objects) {
@@ -175,21 +173,10 @@ public class SetPasswordViewController {
     }
 
     @javafx.fxml.FXML
-    public void backToLoginPageButtonOnAction(ActionEvent actionEvent)
-            throws IOException {
-
-        FXMLLoader fxmlLoader =
-                new FXMLLoader(
-                        HelloApplication.class.getResource("login-view.fxml")
-                );
-
+    public void backToLoginPageButtonOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-
-        Stage nextStage =
-                (Stage) ((Node) actionEvent.getSource())
-                        .getScene()
-                        .getWindow();
-
+        Stage nextStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         nextStage.setTitle("Login Page!");
         nextStage.setScene(scene);
         nextStage.show();

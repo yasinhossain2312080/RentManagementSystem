@@ -124,9 +124,8 @@ public class DeleteTenantsViewController
             monthlyRentLabel.setText("");
             flatRoomShopLabel.setText("");
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Tenant deleted successfully.");
-            alert.showAndWait();
+            Methods.Alert("Tenant deleted successfully.");
+            return;
         }
     }
 

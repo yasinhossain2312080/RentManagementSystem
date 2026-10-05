@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -26,8 +26,7 @@
                   <Font name="Segoe UI Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="googleAccountTextField" editable="false" layoutX="28.0" layoutY="64.0" prefHeight="25.0" prefWidth="294.0" />
-            <Button layoutX="86.0" layoutY="110.0" mnemonicParsing="false" onAction="#connectGoogleAccountButtonOnAction" prefHeight="25.0" prefWidth="179.0" text="Connect google Acccount" />
+            <Button layoutX="174.0" layoutY="118.0" mnemonicParsing="false" onAction="#connectGoogleAccountButtonOnAction" prefHeight="25.0" prefWidth="78.0" text="Connect" />
             <Label layoutX="384.0" layoutY="68.0" prefHeight="18.0" prefWidth="117.0" style="-fx-text-fill: #F5F5F5;">
                <font>
                   <Font name="Segoe UI Bold" size="14.0" />
@@ -55,6 +54,7 @@
                   <Font name="Segoe UI Bold" size="14.0" />
                </font>
             </Label>
+            <ComboBox fx:id="googleAccountComboBox" layoutX="83.0" layoutY="68.0" prefHeight="25.0" prefWidth="260.0" />
          </children>
       </Pane>
       <Button layoutX="1174.0" layoutY="27.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="26.0" prefWidth="78.0" text="Back" />
