@@ -75,6 +75,12 @@ public class TenantsViewController
         advancedTC.setCellValueFactory(
                 new PropertyValueFactory<Tenants, Double>("advance")
         );
+
+        searchTenantsTF.setOnAction(event -> {
+            clickButtonOnAction(
+                    new ActionEvent(searchTenantsTF, null)
+            );
+        });
     }
 
 
@@ -83,50 +89,37 @@ public class TenantsViewController
 
         tenantsInformationTableView.getItems().clear();
 
-        String searchName =
+        String search =
                 searchTenantsTF.getText().trim();
 
-        String searchId =
-                searchTenantsTF.getText().trim();
-
-
-        if (searchName.isEmpty() && searchId.isEmpty()) {
-
-            tenantsInformationTableView.getItems();
+        if (search.isEmpty()) {
 
             return;
         }
 
-
         ObservableList<Tenants> searchList =
                 FXCollections.observableArrayList();
-
 
         ArrayList<Object> objects =
                 BinaryFileManager.ReadObjects("Tenants.bin");
 
-
         String currentUserID =
                 User.currentUser.getUserID();
-
 
         for (Object object : objects) {
 
             Tenants tenant = (Tenants) object;
 
-
             if (!tenant.getUserID().equals(currentUserID)) {
                 continue;
             }
 
-
-            if (tenant.getName().equalsIgnoreCase(searchName)
-                    || tenant.getId().equalsIgnoreCase(searchId)) {
+            if (tenant.getName().equalsIgnoreCase(search)
+                    || tenant.getId().equalsIgnoreCase(search)) {
 
                 searchList.add(tenant);
             }
         }
-
 
         if (searchList.isEmpty()) {
 
@@ -134,7 +127,6 @@ public class TenantsViewController
 
             return;
         }
-
 
         tenantsInformationTableView.setItems(searchList);
     }

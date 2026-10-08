@@ -21,6 +21,42 @@ public class ChangePasswordViewController
 
     @javafx.fxml.FXML
     public void initialize() {
+        // Current Password → New Password
+        currentPasswordPF.setOnAction(event -> {
+            newPasswordPF.requestFocus();
+        });
+
+        currentPasswordPF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                currentPasswordPF.requestFocus();
+            }
+        });
+
+        newPasswordPF.setOnAction(event -> {
+            confirmPasswordPF.requestFocus();
+        });
+
+        newPasswordPF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                currentPasswordPF.requestFocus();
+            }
+        });
+
+        confirmPasswordPF.setOnAction(event -> {
+            try {
+                changePasswordButtonOnAction(
+                        new ActionEvent(confirmPasswordPF, null)
+                );
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        confirmPasswordPF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                newPasswordPF.requestFocus();
+            }
+        });
     }
 
     @javafx.fxml.FXML

@@ -50,14 +50,149 @@ public class RentPaymentsViewController
         paymentsStatusComboBox.getItems().addAll("Paid","Partially Paid");
         paymentsStatusComboBox.setDisable(true);
 
+        tenantsNameTF.setOnAction(event -> {
+            TenantsID.requestFocus();
+        });
+
+        tenantsNameTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                tenantsNameTF.requestFocus();
+            }
+        });
+
+        TenantsID.setOnAction(event -> {
+            try {
+                searchButtonOnAction(
+                        new ActionEvent(TenantsID, null)
+                );
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        TenantsID.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                tenantsNameTF.requestFocus();
+            }
+        });
+
+        monthTF.setOnAction(event -> {
+            paymentsDateDatePicker.requestFocus();
+        });
+
+        monthTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                TenantsID.requestFocus();
+            }
+        });
+
+        paymentsDateDatePicker.setOnKeyPressed(event -> {
+
+            if (event.getCode() == javafx.scene.input.KeyCode.ENTER) {
+                paymentsMethodComboBox.requestFocus();
+            }
+
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                monthTF.requestFocus();
+            }
+        });
+
+        paymentsMethodComboBox.setOnKeyPressed(event -> {
+
+            if (event.getCode() == javafx.scene.input.KeyCode.ENTER) {
+                monthlyRentTF.requestFocus();
+            }
+
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                paymentsDateDatePicker.requestFocus();
+            }
+        });
+
+        monthlyRentTF.setOnAction(event -> {
+            electricityBillTextField.requestFocus();
+        });
+
+        monthlyRentTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                paymentsMethodComboBox.requestFocus();
+            }
+        });
+
+        electricityBillTextField.setOnAction(event -> {
+            gasBillTextField.requestFocus();
+        });
+
+        electricityBillTextField.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                monthlyRentTF.requestFocus();
+            }
+        });
+
+        gasBillTextField.setOnAction(event -> {
+            waterBillTextField.requestFocus();
+        });
+
+        gasBillTextField.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                electricityBillTextField.requestFocus();
+            }
+        });
+
+        waterBillTextField.setOnAction(event -> {
+            paidAmountTextFiled.requestFocus();
+        });
+
+        waterBillTextField.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                gasBillTextField.requestFocus();
+            }
+        });
+
+        paidAmountTextFiled.setOnAction(event -> {
+            try {
+                calculateButtonOnAction(
+                        new ActionEvent(paidAmountTextFiled, null)
+                );
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        paidAmountTextFiled.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                waterBillTextField.requestFocus();
+            }
+        });
+
+        paidAmountTextFiled.setOnAction(event -> {
+            try {
+                calculateButtonOnAction(
+                        new ActionEvent(paidAmountTextFiled, null)
+                );
+
+                savePaymentsButtonOnAction(
+                        new ActionEvent(paidAmountTextFiled, null)
+                );
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @javafx.fxml.FXML
     public void searchButtonOnAction(ActionEvent actionEvent) {
         String name = tenantsNameTF.getText().trim();
         String id = TenantsID.getText().trim();
+
+
         if(name.isEmpty() && (id.isEmpty())){
             Methods.Alert("Please Enter Tenant NAME or ID.");
+            return;
+        }
+
+        if (name.matches(".*\\d.*")) {
+            Methods.Alert("Tenant name cannot contain numbers.");
             return;
         }
 
@@ -165,6 +300,12 @@ public class RentPaymentsViewController
             Methods.Alert("Please select payment date.");
             return;
         }
+
+        if (paymentsDateDatePicker.getValue().isAfter(java.time.LocalDate.now())) {
+            Methods.Alert("Payment date cannot be a future date.");
+            return;
+        }
+
         if(paymentsMethodComboBox.getValue() == null){
             Methods.Alert("Please select payment method.");
             return;

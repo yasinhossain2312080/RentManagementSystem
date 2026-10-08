@@ -69,8 +69,96 @@ public class EditTenantsInsideViewController
 
     @javafx.fxml.FXML
     public void initialize() {
-    }
 
+        // Name → ID
+        editNameTF.setOnAction(event -> {
+            editIDTF.requestFocus();
+        });
+
+        editNameTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                editNameTF.requestFocus();
+            }
+        });
+
+
+        // ID → Advance
+        editIDTF.setOnAction(event -> {
+            advanceTF.requestFocus();
+        });
+
+        editIDTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                editNameTF.requestFocus();
+            }
+        });
+
+
+        // Advance → Phone Number
+        advanceTF.setOnAction(event -> {
+            phoneNumberTF.requestFocus();
+        });
+
+        advanceTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                editIDTF.requestFocus();
+            }
+        });
+
+
+        // Phone Number → Location/Area
+        phoneNumberTF.setOnAction(event -> {
+            locationAreaTF.requestFocus();
+        });
+
+        phoneNumberTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                advanceTF.requestFocus();
+            }
+        });
+
+
+        // Location/Area → Monthly Rent
+        locationAreaTF.setOnAction(event -> {
+            monthlyRentTF.requestFocus();
+        });
+
+        locationAreaTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                phoneNumberTF.requestFocus();
+            }
+        });
+
+
+        // Monthly Rent → Flat/Room/Dokan
+        monthlyRentTF.setOnAction(event -> {
+            flatRoomShopTF.requestFocus();
+        });
+
+        monthlyRentTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                locationAreaTF.requestFocus();
+            }
+        });
+
+        // Flat/Room/Dokan → Update
+        flatRoomShopTF.setOnAction(event -> {
+            try {
+                updateButtonOnAction(
+                        new ActionEvent(flatRoomShopTF, null)
+                );
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        flatRoomShopTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                monthlyRentTF.requestFocus();
+            }
+        });
+
+    }
 
     @javafx.fxml.FXML
     public void updateButtonOnAction(ActionEvent actionEvent) {

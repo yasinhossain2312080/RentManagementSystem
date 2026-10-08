@@ -55,3 +55,4 @@ emailConfig.properties
 app/
 installer/
 package-input/
+runtime-image/

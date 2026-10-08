@@ -39,6 +39,30 @@ public class EditTenantsViewController
 
     @javafx.fxml.FXML
     public void initialize() {
+        nameTF.setOnAction(event -> {
+            idTF.requestFocus();
+        });
+        nameTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                nameTF.requestFocus();
+            }
+        });
+
+        idTF.setOnAction(event -> {
+            try {
+                searchButtonOnAction(
+                        new ActionEvent(idTF, null)
+                );
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        idTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                nameTF.requestFocus();
+            }
+        });
     }
 
 

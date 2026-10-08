@@ -31,6 +31,82 @@ public class AccountProfileViewController
 
     @javafx.fxml.FXML
     public void initialize() {
+
+        propertyNameTF.setOnAction(event -> {
+            ownerNameTF.requestFocus();
+        });
+
+        propertyNameTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                propertyNameTF.requestFocus();
+            }
+        });
+
+        ownerNameTF.setOnAction(event -> {
+            propertyAddressTF.requestFocus();
+        });
+
+        ownerNameTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                propertyNameTF.requestFocus();
+            }
+        });
+
+        propertyAddressTF.setOnAction(event -> {
+            contactNumberTF.requestFocus();
+        });
+
+        propertyAddressTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                ownerNameTF.requestFocus();
+            }
+        });
+
+        contactNumberTF.setOnAction(event -> {
+            totalFloorsTF.requestFocus();
+        });
+
+        contactNumberTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                propertyAddressTF.requestFocus();
+            }
+        });
+
+        totalFloorsTF.setOnAction(event -> {
+            totalShopTF.requestFocus();
+        });
+
+        totalFloorsTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                contactNumberTF.requestFocus();
+            }
+        });
+
+        totalShopTF.setOnAction(event -> {
+            totalGarmentsTF.requestFocus();
+        });
+
+        totalShopTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                totalFloorsTF.requestFocus();
+            }
+        });
+
+        totalGarmentsTF.setOnAction(event -> {
+            try {
+                updateProfileButtonOnAction(
+                        new ActionEvent(totalGarmentsTF, null)
+                );
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        totalGarmentsTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                totalShopTF.requestFocus();
+            }
+        });
     }
 
     @javafx.fxml.FXML

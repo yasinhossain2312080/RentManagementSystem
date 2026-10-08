@@ -49,6 +49,32 @@ public class HistoryViewController
         currentDueTC.setCellValueFactory(new PropertyValueFactory<RentPayments,Double>("CurrentDue"));
         previousDueTC.setCellValueFactory(new PropertyValueFactory<RentPayments,Double>("PreviousDue"));
         statusTC.setCellValueFactory(new PropertyValueFactory<RentPayments,String>("PaymentStatus"));
+
+        tenantsNameTF.setOnAction(event -> {
+            idTF.requestFocus();
+        });
+
+        tenantsNameTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                tenantsNameTF.requestFocus();
+            }
+        });
+
+        idTF.setOnAction(event -> {
+            try {
+                searchButtonOnAction(
+                        new ActionEvent(idTF, null)
+                );
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        idTF.setOnKeyPressed(event -> {
+            if (event.getCode() == javafx.scene.input.KeyCode.UP) {
+                tenantsNameTF.requestFocus();
+            }
+        });
     }
 
     @javafx.fxml.FXML
