@@ -56,3 +56,9 @@ app/
 installer/
 package-input/
 runtime-image/
+
+dist/
+installer/
+package-input/
+target/
+runtime-image/
