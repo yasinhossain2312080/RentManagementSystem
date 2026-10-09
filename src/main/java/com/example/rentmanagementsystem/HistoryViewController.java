@@ -18,27 +18,38 @@ public class HistoryViewController
 {
     @javafx.fxml.FXML
     private TableView<RentPayments> paymentsHistoryTableView;
+
     @javafx.fxml.FXML
     private TableColumn<RentPayments, Double> rentTC;
+
     @javafx.fxml.FXML
-    private TableColumn<RentPayments , String> nameTC;
+    private TableColumn<RentPayments, String> nameTC;
+
     @javafx.fxml.FXML
     private TextField tenantsNameTF;
+
     @javafx.fxml.FXML
-    private TableColumn<RentPayments,String> statusTC;
+    private TableColumn<RentPayments, String> statusTC;
+
     @javafx.fxml.FXML
-    private TableColumn<RentPayments,String> monthTC;
+    private TableColumn<RentPayments, String> monthTC;
+
     @javafx.fxml.FXML
-    private TableColumn<RentPayments,String> idTC;
+    private TableColumn<RentPayments, String> idTC;
+
     @javafx.fxml.FXML
-    private TableColumn<RentPayments,Double> currentDueTC;
+    private TableColumn<RentPayments, Double> currentDueTC;
+
     @javafx.fxml.FXML
     private TextField idTF;
-    @javafx.fxml.FXML
-    private TableColumn<RentPayments,Double> totalTC;
-    @javafx.fxml.FXML
-    private TableColumn<RentPayments,Double> previousDueTC;
 
+    private ArrayList<Integer> displayedPaymentIndexes = new ArrayList<>();
+
+    @javafx.fxml.FXML
+    private TableColumn<RentPayments, Double> totalTC;
+
+    @javafx.fxml.FXML
+    private TableColumn<RentPayments, Double> previousDueTC;
     @javafx.fxml.FXML
     public void initialize() {
         nameTC.setCellValueFactory(new PropertyValueFactory<RentPayments,String>("tenantName"));
@@ -79,36 +90,44 @@ public class HistoryViewController
 
     @javafx.fxml.FXML
     public void searchButtonOnAction(ActionEvent actionEvent) {
-        String name= tenantsNameTF.getText().trim();
+        String name = tenantsNameTF.getText().trim();
         String id = idTF.getText().trim();
-        if(name.isEmpty()  && id.isEmpty()){
+
+        if (name.isEmpty() && id.isEmpty()) {
             Methods.Alert("Please enter NAME or ID.");
             return;
         }
-        paymentsHistoryTableView.getItems().clear();
 
-        ArrayList<Object>objects = BinaryFileManager.ReadObjects("RentPayments.bin");
+        paymentsHistoryTableView.getItems().clear();
+        displayedPaymentIndexes.clear();
+
+        ArrayList<Object> objects =
+                BinaryFileManager.ReadObjects("RentPayments.bin");
+
         boolean found = false;
-        for(Object object :objects){
-            RentPayments payment = (RentPayments) object;
+
+        for (int i = 0; i < objects.size(); i++) {
+            RentPayments payment = (RentPayments) objects.get(i);
 
             boolean match;
-            if(!name.isEmpty() && !id.isEmpty()){
-                match = payment.getTenantName().equalsIgnoreCase(name) &&
-                        payment.getTenantId().equalsIgnoreCase(id);
-            }else if (!name.isEmpty()){
-                match = payment.getTenantName().equalsIgnoreCase(name);
 
-            }else{
+            if (!name.isEmpty() && !id.isEmpty()) {
+                match = payment.getTenantName().equalsIgnoreCase(name)
+                        && payment.getTenantId().equalsIgnoreCase(id);
+            } else if (!name.isEmpty()) {
+                match = payment.getTenantName().equalsIgnoreCase(name);
+            } else {
                 match = payment.getTenantId().equalsIgnoreCase(id);
             }
-            if(match){
+
+            if (match) {
                 paymentsHistoryTableView.getItems().add(payment);
+                displayedPaymentIndexes.add(i);
                 found = true;
             }
         }
 
-        if (!found){
+        if (!found) {
             Methods.Alert("PAYMENT HISTORY NOT FOUND!!");
         }
 
@@ -131,5 +150,58 @@ public class HistoryViewController
         nextStage.setScene(scene);
         nextStage.show();
 
+    }
+
+    @javafx.fxml.FXML
+    public void deleteButtonOnAction(ActionEvent actionEvent) {
+        int selectedIndex =
+                paymentsHistoryTableView.getSelectionModel().getSelectedIndex();
+
+        if (selectedIndex == -1) {
+            Methods.Alert("Please select a Payment History to delete.");
+            return;
+        }
+
+        javafx.scene.control.Alert alert =
+                new javafx.scene.control.Alert(
+                        javafx.scene.control.Alert.AlertType.CONFIRMATION
+                );
+
+        alert.setTitle("Delete Payment History");
+        alert.setHeaderText("Are you sure you want to delete this payment?");
+        alert.setContentText("This action cannot be undone.");
+
+        java.util.Optional<javafx.scene.control.ButtonType> result =
+                alert.showAndWait();
+
+        if (result.isEmpty()
+                || result.get() != javafx.scene.control.ButtonType.OK) {
+            return;
+        }
+
+        if (selectedIndex >= displayedPaymentIndexes.size()) {
+            Methods.Alert("Please search again and select the payment.");
+            return;
+        }
+
+        int fileIndex = displayedPaymentIndexes.get(selectedIndex);
+
+        ArrayList<Object> objects =
+                BinaryFileManager.ReadObjects("RentPayments.bin");
+
+        if (fileIndex < 0 || fileIndex >= objects.size()) {
+            Methods.Alert("Payment History not found. Please search again.");
+            return;
+        }
+
+        objects.remove(fileIndex);
+
+        BinaryFileManager.writeAllObject("RentPayments.bin", objects);
+
+        Methods.Alert("Selected Payment History deleted successfully.");
+
+        paymentsHistoryTableView.getItems().clear();
+        displayedPaymentIndexes.clear();
+        searchButtonOnAction(actionEvent);
     }
 }

@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -30,25 +31,49 @@ public class SettingsViewController
 
     @javafx.fxml.FXML
     public void initialize() {
-        try {
+        String appData = System.getenv("APPDATA");
+        String userID = User.currentUser.getUserID();
 
-            String userID = User.currentUser.getUserID();
-            FileInputStream fis = new FileInputStream("PropertyInformation_" + userID + ".bin");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            PropertyInformation property = (PropertyInformation) ois.readObject();
+        File userFolder = new File(
+                appData
+                        + File.separator
+                        + "RentManagementSystem"
+                        + File.separator
+                        + "UserData"
+                        + File.separator
+                        + userID
+        );
+
+        File propertyFile = new File(
+                userFolder,
+                "PropertyInformation_" + userID + ".bin"
+        );
+
+        if (!propertyFile.exists()) {
+            return;
+        }
+
+        try (FileInputStream fis = new FileInputStream(propertyFile);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+
+            PropertyInformation property =
+                    (PropertyInformation) ois.readObject();
 
             ownerNameTF.setText(property.getOwnerName());
             propertyNameTF.setText(property.getPropertyName());
             propertyAddressTF.setText(property.getPropertyAddress());
             contactNumberTF.setText(property.getContactNumber());
-            totalFloorsTF.setText(String.valueOf(property.getTotalFloor()));
-            totalGarmentsTF.setText(String.valueOf(property.getTotalGarment()));
-            totalShopTF.setText(String.valueOf(property.getTotalShop()));
 
-            ois.close();
-            fis.close();
+            totalFloorsTF.setText(
+                    String.valueOf(property.getTotalFloor()));
 
-        } catch (Exception e) {
+            totalGarmentsTF.setText(
+                    String.valueOf(property.getTotalGarment()));
+
+            totalShopTF.setText(
+                    String.valueOf(property.getTotalShop()));
+
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

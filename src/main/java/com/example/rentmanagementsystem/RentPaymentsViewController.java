@@ -149,33 +149,14 @@ public class RentPaymentsViewController
         });
 
         paidAmountTextFiled.setOnAction(event -> {
-            try {
-                calculateButtonOnAction(
-                        new ActionEvent(paidAmountTextFiled, null)
-                );
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            calculateButtonOnAction(
+                    new ActionEvent(paidAmountTextFiled, null)
+            );
         });
 
         paidAmountTextFiled.setOnKeyPressed(event -> {
             if (event.getCode() == javafx.scene.input.KeyCode.UP) {
                 waterBillTextField.requestFocus();
-            }
-        });
-
-        paidAmountTextFiled.setOnAction(event -> {
-            try {
-                calculateButtonOnAction(
-                        new ActionEvent(paidAmountTextFiled, null)
-                );
-
-                savePaymentsButtonOnAction(
-                        new ActionEvent(paidAmountTextFiled, null)
-                );
-
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         });
     }
@@ -261,9 +242,17 @@ public class RentPaymentsViewController
             double paidAmount = Double.parseDouble(paidAmountTextFiled.getText());
             double total = monthlyRent + previous + electricity + water + gas;
 
-            if(paidAmount > total){
-                Methods.Alert("Paid Amount cannot be greater then Total Amount.");
+
+            if (paidAmount > total) {
+                Methods.Alert("Paid Amount cannot be greater than Total Amount.");
+
+                totalTextFiled.clear();
+                currentDueTextField.clear();
+                paymentsStatusComboBox.setValue(null);
+
+                return;
             }
+
             double currentDue = (total - paidAmount);
             totalTextFiled.setText(String.valueOf(total));
             currentDueTextField.setText(String.valueOf(currentDue));
@@ -285,18 +274,19 @@ public class RentPaymentsViewController
 
     @javafx.fxml.FXML
     public void savePaymentsButtonOnAction(ActionEvent actionEvent) {
-        if(selectedTenant == null){
+        if (selectedTenant == null) {
             Methods.Alert("Please search a Tenant first.");
             return;
         }
 
         String month = monthTF.getText().trim();
 
-        if(month.isEmpty()){
+        if (month.isEmpty()) {
             Methods.Alert("Please enter payment month.");
             return;
         }
-        if(paymentsDateDatePicker.getValue() == null){
+
+        if (paymentsDateDatePicker.getValue() == null) {
             Methods.Alert("Please select payment date.");
             return;
         }
@@ -306,26 +296,66 @@ public class RentPaymentsViewController
             return;
         }
 
-        if(paymentsMethodComboBox.getValue() == null){
+        if (paymentsMethodComboBox.getValue() == null) {
             Methods.Alert("Please select payment method.");
             return;
         }
-        try{
-                double monthlyRent = Double.parseDouble(monthlyRentTF.getText());
-                double previous = Double.parseDouble(previousDue.getText());
-                double electricityBill = Double.parseDouble(electricityBillTextField.getText());
-                double waterBill = Double.parseDouble(waterBillTextField.getText());
-                double gasBill= Double.parseDouble(gasBillTextField.getText());
-                double total = Double.parseDouble(totalTextFiled.getText());
-                double paidAmount = Double.parseDouble(paidAmountTextFiled.getText());
-                double currentDue = Double.parseDouble(currentDueTextField.getText());
 
-                RentPayments payment = new RentPayments(
+        try {
+            double monthlyRent = Double.parseDouble(monthlyRentTF.getText());
+            double previous = Double.parseDouble(previousDue.getText());
+            double electricityBill = Double.parseDouble(electricityBillTextField.getText());
+            double waterBill = Double.parseDouble(waterBillTextField.getText());
+            double gasBill = Double.parseDouble(gasBillTextField.getText());
+            double total = Double.parseDouble(totalTextFiled.getText());
+            double paidAmount = Double.parseDouble(paidAmountTextFiled.getText());
+            double currentDue = Double.parseDouble(currentDueTextField.getText());
+
+            if (monthlyRent < 0 || previous < 0 ||
+                    electricityBill < 0 || waterBill < 0 || gasBill < 0) {
+                Methods.Alert("Bill amounts cannot be negative.");
+                return;
+            }
+
+            if (paidAmount < 0) {
+                Methods.Alert("Paid Amount cannot be negative.");
+                return;
+            }
+
+            if (paidAmount > total) {
+                Methods.Alert("Paid Amount cannot be greater than Total Amount.");
+                return;
+            }
+
+            if (Math.abs(total - (monthlyRent + previous
+                    + electricityBill + waterBill + gasBill)) > 0.01) {
+                Methods.Alert("Please calculate the payment correctly first.");
+                return;
+            }
+
+            if (Math.abs(currentDue - (total - paidAmount)) > 0.01) {
+                Methods.Alert("Please calculate the payment correctly first.");
+                return;
+            }
+
+            String status;
+
+            if (paidAmount == total) {
+                status = "Paid";
+            } else if (paidAmount > 0) {
+                status = "Partially Paid";
+            } else {
+                status = "Due";
+            }
+
+            paymentsStatusComboBox.setValue(status);
+
+            RentPayments payment = new RentPayments(
                     selectedTenant.getName(),
                     selectedTenant.getId(),
                     month,
                     paymentsMethodComboBox.getValue(),
-                    paymentsStatusComboBox.getValue(),
+                    status,
                     monthlyRent,
                     previous,
                     electricityBill,
@@ -337,8 +367,9 @@ public class RentPaymentsViewController
                     paymentsDateDatePicker.getValue()
             );
 
-            BinaryFileManager.writeObject("RentPayments.bin",payment);
-            Methods.Alert("Payment Successfully save.");
+            BinaryFileManager.writeObject("RentPayments.bin", payment);
+
+            Methods.Alert("Payment Successfully saved.");
 
             tenantsNameTF.clear();
             TenantsID.clear();
@@ -354,10 +385,11 @@ public class RentPaymentsViewController
             totalTextFiled.clear();
             paidAmountTextFiled.clear();
             currentDueTextField.clear();
+
             selectedTenant = null;
-        }
-        catch (NumberFormatException e){
-            Methods.Alert("Please calculate the payment first.");
+
+        } catch (NumberFormatException e) {
+            Methods.Alert("Please enter valid amounts and calculate the payment first.");
         }
     }
 
